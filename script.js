@@ -3,11 +3,11 @@ const pageStyle = document.getElementById("page-style");
 
 // Definisikan route beserta file HTML dan CSS
 const routes = {
-  "/quiz1": { html: "/quiz1/templates/home.html", css: "/quiz1/styles/home.css" },
-  "/quiz1/profile": { html: "/quiz1/templates/profile.html", css: "/quiz1/rofile.css" },
-  "/quiz1/hometown": { html: "/quiz1/templates/hometown.html", css: "/quiz1/styles/hometown.css" },
-  "/quiz1/food": { html: "/quiz1/es/food.html", css: "/quiz1/styles/food.css" },
-  "/quiz1/tourist": { html: "/quiz1/templates/tourist.html", css: "/quiz1/styles/tourist.css" },
+  "/quiz1": { html: "templates/home.html", css: "styles/home.css" },
+  "/quiz1/profile": { html: "templates/profile.html", css: "styles/profile.css" },
+  "/quiz1/hometown": { html: "templates/hometown.html", css: "styles/hometown.css" },
+  "/quiz1/food": { html: "templates/food.html", css: "styles/food.css" },
+  "/quiz1/tourist": { html: "templates/tourist.html", css: "styles/tourist.css" },
 };
 
 // Fungsi load konten + CSS
@@ -19,8 +19,7 @@ async function loadContent(path) {
     content.innerHTML = html;
     pageStyle.setAttribute("href", route.css); // ganti CSS sesuai halaman
   } catch (err) {
-    console.log("tidak bisa");
-    content.innerHTML = "<h2>404 Page Not Found - by kaka</h2>";
+    content.innerHTML = "<h2>404 Page Not Found</h2>";
     pageStyle.setAttribute("href", ""); // hapus CSS jika tidak ada
   }
 }
