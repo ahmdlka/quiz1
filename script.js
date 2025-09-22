@@ -20,6 +20,7 @@ async function loadContent(path) {
     pageStyle.setAttribute("href", route.css); // ganti CSS sesuai halaman
   } catch (err) {
     console.log(route.html);
+    console.log(err);
     content.innerHTML = "<h2>404 Page Not Found</h2>";
     pageStyle.setAttribute("href", ""); // hapus CSS jika tidak ada
   }
