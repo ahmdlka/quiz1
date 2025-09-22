@@ -19,7 +19,7 @@ async function loadContent(path) {
     content.innerHTML = html;
     pageStyle.setAttribute("href", route.css); // ganti CSS sesuai halaman
   } catch (err) {
-    content.innerHTML = "<h2>404 Page Not Found</h2>";
+    content.innerHTML = "<h2>404 Page Not Found - by kaka</h2>";
     pageStyle.setAttribute("href", ""); // hapus CSS jika tidak ada
   }
 }
