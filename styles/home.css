@@ -1,0 +1,114 @@
+body {
+  margin: 0;
+  padding-top: 90px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: flex-start; /* rata kiri */
+  align-items: center;
+  background: url('../assets/background.png') repeat;
+  background-size: cover; /* bisa cover, contain, atau ukuran custom */
+  background-position: center;
+  font-family: var(--font-main);
+}
+.page-selector {
+  display: flex;
+  justify-content: center;
+  gap: 100px; /* lebih lega */
+  margin-bottom: 100px;
+  flex-wrap: wrap;
+}
+
+/* Page box tanpa skew, ukuran lebih besar */
+.page-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  background: #fcfcfc;
+  padding: 20px;        /* lebih besar */
+  border-radius: 20px;  /* lebih rounded */
+  width: 200px;         /* lebih lebar */
+  height: 225px;        /* lebih tinggi */
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease, background 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Gambar di dalam page box */
+.page-box img {
+  width: 130px;  /* lebih besar */
+  height: 130px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 12px;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+/* Hover efek: scale dan shadow halus */
+.page-box:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  background: #ffffff !important;
+  color: var(--accent) !important;
+}
+
+.page-box:hover img {
+  transform: scale(1.1);
+  filter: brightness(1.05);
+}
+.page-box span {
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+}
+/* ==== Container ==== */
+.container-home {
+  max-width: 950px;
+  margin-left: 20px;
+}
+
+h2, h1, p {
+  margin: 0.4rem 0;
+  opacity: 0;
+  transform: translateX(-50px); /* slide dari kiri */
+  animation: slideIn 1s ease forwards;
+}
+
+h2 {
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 25px;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Opsional untuk animasi */
+  animation-delay: 0.2s;
+}
+
+h1 {
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 40px;
+  color: var(--text-color);
+  animation-delay: 0.6s;
+}
+
+p {
+  font-family: "Google Sans Code", monospace;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #444;
+  animation-delay: 1s;
+}
+
+/* ==== Animation Keyframes ==== */
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
