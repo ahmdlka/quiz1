@@ -14,12 +14,12 @@ const routes = {
 async function loadContent(path) {
   const route = routes[path] || routes["/quiz1"];
   try {
-    console.log(route.html);
     const res = await fetch(route.html);
     const html = await res.text();
     content.innerHTML = html;
     pageStyle.setAttribute("href", route.css); // ganti CSS sesuai halaman
   } catch (err) {
+    console.log(route.html);
     content.innerHTML = "<h2>404 Page Not Found</h2>";
     pageStyle.setAttribute("href", ""); // hapus CSS jika tidak ada
   }
