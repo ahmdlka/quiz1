@@ -1,3 +1,4 @@
+// Ambil elemen konten dan link CSS
 const content = document.getElementById("content");
 const pageStyle = document.getElementById("page-style");
 
@@ -10,17 +11,27 @@ const routes = {
   "/quiz1/tourist": { html: "templates/tourist.html", css: "styles/tourist.css" },
 };
 
+// Fungsi untuk normalisasi path (hapus trailing slash)
+function normalizePath(path) {
+  if (!path) return "/quiz1";
+  return path.endsWith("/") && path !== "/" ? path.slice(0, -1) : path;
+}
+
 // Fungsi load konten + CSS
 async function loadContent(path) {
-  const route = routes[path] || routes["/quiz1"];
+  const normalizedPath = normalizePath(path);
+  const route = routes[normalizedPath] || routes["/quiz1"];
+
   try {
     const res = await fetch(route.html);
+    if (!res.ok) throw new Error("File not found");
     const html = await res.text();
     content.innerHTML = html;
-    pageStyle.setAttribute("href", route.css); // ganti CSS sesuai halaman
+    pageStyle.setAttribute("href", route.css);
   } catch (err) {
     content.innerHTML = "<h2>404 Page Not Found</h2>";
-    pageStyle.setAttribute("href", ""); // hapus CSS jika tidak ada
+    pageStyle.setAttribute("href", "");
+    console.error(err);
   }
 }
 
@@ -28,12 +39,16 @@ async function loadContent(path) {
 document.querySelectorAll("nav a").forEach((link) => {
   link.addEventListener("click", (e) => {
     e.preventDefault();
-    const path = link.getAttribute("href");
-    window.history.pushState({}, "", path);
-    loadContent(path);
+    const path = normalizePath(link.getAttribute("href"));
+    
+    // Cek jika path sama, jangan pushState berulang
+    if (window.location.pathname !== path) {
+      window.history.pushState({}, "", path);
+      loadContent(path);
+    }
   });
 });
- 
+
 // Back/forward browser
 window.addEventListener("popstate", () => {
   loadContent(window.location.pathname);
