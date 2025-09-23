@@ -5,7 +5,7 @@
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-  font-family: 'Poppins', sans-serif;
+  font-family: "Google Sans Code", monospace;
 }
 
 /* Header */
@@ -49,11 +49,18 @@
   gap: 20px;
   flex-wrap: wrap;
 }
-.about-content img, .story-content img {
+.story-content img {
   width: 40%;
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.1);
 }
+
+.about-content img {
+  width: 20%;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
 .about-content p, .story-content p {
   flex: 1;
   font-size: 15px;
