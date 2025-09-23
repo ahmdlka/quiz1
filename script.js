@@ -35,18 +35,22 @@ async function loadContent(path) {
   }
 }
 
-// Handle klik link
-document.querySelectorAll("nav a").forEach((link) => {
-  link.addEventListener("click", (e) => {
-    e.preventDefault();
-    const path = normalizePath(link.getAttribute("href"));
-    
-    // Cek jika path sama, jangan pushState berulang
-    if (window.location.pathname !== path) {
-      window.history.pushState({}, "", path);
-      loadContent(path);
-    }
-  });
+// Fungsi untuk menangani klik link
+function handleLinkClick(e) {
+  e.preventDefault();
+  const link = e.currentTarget;
+  const path = normalizePath(link.getAttribute("href"));
+  
+  // Cek jika path sama, jangan pushState berulang
+  if (window.location.pathname !== path) {
+    window.history.pushState({}, "", path);
+    loadContent(path);
+  }
+}
+
+// Handle klik link untuk nav a dan page-box
+document.querySelectorAll("nav a, .page-box").forEach((link) => {
+  link.addEventListener("click", handleLinkClick);
 });
 
 // Back/forward browser
@@ -54,5 +58,7 @@ window.addEventListener("popstate", () => {
   loadContent(window.location.pathname);
 });
 
-// Load pertama kali
-loadContent(window.location.pathname);
+// Load pertama kali atau direct link access
+window.addEventListener("DOMContentLoaded", () => {
+  loadContent(window.location.pathname);
+});
