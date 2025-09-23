@@ -40,6 +40,7 @@ document.querySelectorAll("nav a, .page-box").forEach((link) => {
   link.addEventListener("click", function(e) {
     e.preventDefault(); // mencegah browser reload / 404
     const path = normalizePath(link.getAttribute("href"));
+    console.log(path);
     if (window.location.pathname !== path) {
       window.history.pushState({}, "", path); // update URL
       loadContent(path); // fetch konten & CSS
