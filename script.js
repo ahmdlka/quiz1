@@ -20,17 +20,7 @@ function normalizePath(path) {
 // Load konten + CSS
 async function loadContent(path) {
   const normalizedPath = normalizePath(path);
-  const route = routes[normalizedPath];
-
-  if (!route) {
-    // Kalau path tidak dikenal → tampilkan 404
-    content.innerHTML = `
-      <h2>404</h2>
-      <h3>Page Not Found</h3>
-    `;
-    pageStyle.setAttribute("href", "");
-    return;
-  }
+  const route = routes[normalizedPath] || routes["/quiz1"]; // fallback langsung ke home
 
   try {
     const res = await fetch(route.html);
@@ -39,19 +29,20 @@ async function loadContent(path) {
     content.innerHTML = html;
     pageStyle.setAttribute("href", route.css);
   } catch (err) {
-    content.innerHTML = `
-      <h2>404</h2>
-      <h3>Page Not Found</h3>
-    `;
-    pageStyle.setAttribute("href", "");
-    console.error(err);
+    // kalau file error juga fallback ke home
+    const home = routes["/quiz1"];
+    const res = await fetch(home.html);
+    const html = await res.text();
+    content.innerHTML = html;
+    pageStyle.setAttribute("href", home.css);
+    console.error("Error load, fallback ke home:", err);
   }
 }
 
 // Delegasi klik link (navbar & page-box)
 document.addEventListener("click", (e) => {
   const link = e.target.closest("a.nav-link, a.page-box");
-  if (!link) return; // bukan link target
+  if (!link) return;
 
   e.preventDefault();
   const path = normalizePath(link.getAttribute("href"));
@@ -69,7 +60,6 @@ window.addEventListener("popstate", () => {
 
 // Load pertama kali
 window.addEventListener("DOMContentLoaded", () => {
-  // Cek kalau ada redirect dari 404.html
   if (sessionStorage.redirect) {
     const path = sessionStorage.redirect;
     delete sessionStorage.redirect;
