@@ -112,3 +112,46 @@ main#content {
   }
 }
 
+/* Custom 404 Styles */
+.error-container {
+  background-color: #f8f9fa;
+  padding: 2rem;
+  border-radius: 10px;
+  border: 1px solid #dee2e6;
+  font-family: 'Poppins', sans-serif;
+}
+
+.error-heading {
+  color: #dc3545 !important;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.error-lead {
+  color: #6c757d !important;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.error-text {
+  color: #495057;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.error-btn {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.error-btn:hover {
+  background-color: #0b5ed7; /* Biru lebih gelap saat hover */
+  color: white;
+}
+
