@@ -16,7 +16,7 @@ body {
 /* Floating centered navbar styles */
 /* Navbar monokrom kreatif */
 .navbar {
-  position: fixed;
+  position: absolute;
   left: 50%;
   top: 18px;
   color: white;
@@ -97,7 +97,7 @@ h2 {
   font-weight: 400;
   font-style: normal;
   font-size: 60px;
-  justify-content: center;
+  text-align: center;
   background: black;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -109,7 +109,7 @@ h3 {
   font-weight: 400;
   font-style: normal;
   font-size: 40px;
-  justify-content: center;
+  text-align: center;
   background: black;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -123,7 +123,7 @@ h3 {
     width: calc(100% - 32px);
     max-width: 520px;
   }
-  .navbar .container {
+  .navbar .container-nav {
     gap: 10px;
     flex-wrap: wrap;
   }
