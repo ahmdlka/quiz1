@@ -97,10 +97,11 @@ h2 {
   font-weight: 400;
   font-style: normal;
   font-size: 25px;
+  justify-content: center;
   background: var(--gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
+  margin-top: 600px;
   /* Opsional untuk animasi */
   animation-delay: 0.2s;
 }
