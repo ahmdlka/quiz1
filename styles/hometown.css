@@ -1,0 +1,63 @@
+.hometown-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+}
+
+.hometown-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.hometown-header h1 {
+  font-family: "Press Start 2P", sans-serif;
+  font-size: 32px;
+  color: var(--accent, #007bff);
+}
+.hometown-header p {
+  font-size: 16px;
+  color: #555;
+}
+
+/* Section layout */
+.hometown-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 60px;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.hometown-section.reverse {
+  flex-direction: row-reverse;
+}
+.hometown-section img {
+  width: 45%;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+.section-text {
+  flex: 1;
+}
+.section-text h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: var(--accent, #007bff);
+}
+.section-text p {
+  font-size: 15px;
+  color: #444;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .hometown-section {
+    flex-direction: column;
+  }
+  .hometown-section.reverse {
+    flex-direction: column;
+  }
+  .hometown-section img {
+    width: 100%;
+  }
+}
