@@ -122,27 +122,30 @@ main#content {
 }
 
 .error-heading {
-  color: #dc3545 !important;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
+  color: black !important;
+  font-family: "Press Start 2P", system-ui;
+  font-size: 45px;
+  font-weight: 400;
   margin-bottom: 1rem;
 }
 
 .error-lead {
-  color: #6c757d !important;
-  font-family: 'Poppins', sans-serif;
+  color: black !important;
+  font-family: "Press Start 2P", system-ui;
+  font-size: 35px;
   font-weight: 400;
   margin-bottom: 1rem;
 }
 
 .error-text {
   color: #495057;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Google Sans Code", monospace;
   font-size: 1.1rem;
   margin-bottom: 2rem;
 }
 
 .error-btn {
+  background-color: #242424;
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   padding: 0.75rem 2rem;
@@ -151,7 +154,7 @@ main#content {
 }
 
 .error-btn:hover {
-  background-color: #0b5ed7; /* Biru lebih gelap saat hover */
+  background-color: #000000;; /* Biru lebih gelap saat hover */
   color: white;
 }
 

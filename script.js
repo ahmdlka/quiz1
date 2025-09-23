@@ -20,12 +20,12 @@ function normalizePath(path) {
 // Fungsi untuk tampilkan 404 (custom, bisa diganti dengan fetch template jika mau)
 function show404(path) {
   content.innerHTML = `
-    <div class="row justify-content-center mt-5">
+    <div class="row justify-content-center mt-5 error-container">
       <div class="col-md-6 text-center">
-        <h1 class="display-1 fw-bold text-danger">404</h1>
-        <p class="lead">Page Not Found</p>
-        <p>The requested path "${path}" does not exist.</p>
-        <a href="/quiz1" class="btn btn-primary">Go to Home</a>
+        <h1 class="display-1 fw-bold error-heading">404</h1>
+        <p class="lead error-lead">Page Not Found</p>
+        <p class="error-text">The requested path "${path}" does not exist.</p>
+        <a href="/quiz1" class="btn btn-primary error-btn">Go to Home</a>
       </div>
     </div>
   `;
