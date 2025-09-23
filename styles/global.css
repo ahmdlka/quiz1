@@ -24,7 +24,7 @@ body {
   z-index: 1030;
   background: rgba(255, 255, 255, 0.95); /* monokrom terang */
   border-radius: 12px;
-  padding: 8px 16px;
+  padding: 8px 8px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.08);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
