@@ -13,14 +13,21 @@ const routes = {
 
 // Normalisasi path (hapus trailing slash)
 function normalizePath(path) {
-  if (!path) return "/quiz1";
+  if (!path || path === "/") return "/quiz1";
   return path.endsWith("/") && path !== "/" ? path.slice(0, -1) : path;
 }
 
 // Load konten + CSS
 async function loadContent(path) {
   const normalizedPath = normalizePath(path);
-  const route = routes[normalizedPath] || routes["/quiz1"];
+  const route = routes[normalizedPath];
+
+  if (!route) {
+    // Kalau path tidak dikenal → tampilkan 404
+    content.innerHTML = "<h2>404 Page Not Found</h2>";
+    pageStyle.setAttribute("href", "");
+    return;
+  }
 
   try {
     const res = await fetch(route.html);
@@ -56,5 +63,13 @@ window.addEventListener("popstate", () => {
 
 // Load pertama kali
 window.addEventListener("DOMContentLoaded", () => {
-  loadContent(window.location.pathname);
+  // Cek kalau ada redirect dari 404.html
+  if (sessionStorage.redirect) {
+    const path = sessionStorage.redirect;
+    delete sessionStorage.redirect;
+    window.history.replaceState({}, "", path);
+    loadContent(path);
+  } else {
+    loadContent(window.location.pathname);
+  }
 });
