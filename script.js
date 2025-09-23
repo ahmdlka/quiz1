@@ -49,7 +49,7 @@ function handleLinkClick(e) {
 }
 
 // Handle klik link untuk nav a dan page-box
-document.querySelectorAll("nav a, .page-box").forEach((link) => {
+document.querySelectorAll("nav a, .page-box, page-selector").forEach((link) => {
   link.addEventListener("click", handleLinkClick);
 });
 
