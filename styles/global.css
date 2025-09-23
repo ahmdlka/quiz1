@@ -96,14 +96,24 @@ h2 {
   font-family: "Press Start 2P", system-ui;
   font-weight: 400;
   font-style: normal;
-  font-size: 25px;
+  font-size: 60px;
   justify-content: center;
-  background: var(--gradient);
+  background: black;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-top: 600px;
-  /* Opsional untuk animasi */
-  animation-delay: 0.2s;
+}
+
+h2 {
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 40px;
+  justify-content: center;
+  background: black;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 600px;
 }
 
 /* Responsive adjustments */
