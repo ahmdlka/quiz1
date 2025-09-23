@@ -39,7 +39,7 @@ body {
 }
 
 /* Container di dalam navbar */
-.navbar .container {
+.navbar .container-nav {
   display: flex;
   align-items: center;
   gap: 16px;
@@ -104,7 +104,7 @@ h2 {
   margin-top: 300px;
 }
 
-h2 {
+h3 {
   font-family: "Press Start 2P", system-ui;
   font-weight: 400;
   font-style: normal;
