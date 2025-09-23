@@ -43,6 +43,14 @@
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Kalau ada redirect dari 404.html, pakai path itu
+    if (sessionStorage.redirect) {
+      const path = sessionStorage.redirect;
+      delete sessionStorage.redirect;
+      window.history.replaceState({}, "", path);
+    }
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
