@@ -94,29 +94,6 @@ main#content {
   padding-top: 90px;
 }
 
-.container h2 {
-  font-family: "Press Start 2P", system-ui;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 60px;
-  text-align: center;
-  background: black;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-top: 300px;
-}
-
-.container h3 {
-  font-family: "Press Start 2P", system-ui;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 40px;
-  text-align: center;
-  background: black;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .navbar {
