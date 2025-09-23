@@ -7,7 +7,6 @@
 body {
   font-family: "Google Sans Code", monospace;
   margin: 0;
-  padding: 0;
   min-height: 100vh;
   background: url('../assets/background.png') repeat;
   background-size: cover; /* bisa cover, contain, atau ukuran custom */
@@ -90,7 +89,7 @@ body {
 
 /* Padding untuk main content agar tidak tertutup navbar */
 main#content {
-  padding-top: 50px;
+  padding-top: 90px;
 }
 
 /* Responsive adjustments */
