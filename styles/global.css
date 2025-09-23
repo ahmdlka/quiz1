@@ -15,15 +15,15 @@ body {
   background-position: center;
 }
 
-/* Floating centered navbar styles */
+/* Floating centered navbar styles - Made Sticky */
 /* Navbar monokrom kreatif */
 .navbar {
-  position: absolute;
+  position: fixed; /* Ubah dari absolute ke fixed untuk sticky effect */
   left: 50%;
-  top: 18px;
+  top: 18px; /* Tetap jarak dari atas viewport */
   color: white;
   transform: translateX(-50%);
-  z-index: 1030;
+  z-index: 1030; /* Tinggi agar di atas konten */
   background: rgba(255, 255, 255, 0.95); /* monokrom terang */
   border-radius: 12px;
   padding: 8px 8px;
@@ -32,22 +32,24 @@ body {
   -webkit-backdrop-filter: blur(8px);
   transition: transform 300ms cubic-bezier(.2,.9,.3,1), box-shadow 250ms ease, background 250ms ease;
   animation: navbar-enter 800ms cubic-bezier(.2,.9,.3,1) both;
+  width: fit-content; /* Tambah: Jaga lebar sesuai konten, tidak full-width */
+  max-width: 90vw; /* Tambah: Batasi lebar di mobile untuk responsif */
 }
 
-/* Hover efek: sedikit naik dan shadow lebih tegas */
+/* Hover efek: sedikit naik dan shadow lebih tegas (tetap sama) */
 .navbar:hover {
   transform: translateX(-50%) translateY(-6px);
   box-shadow: 0 16px 40px rgba(0,0,0,0.15);
 }
 
-/* Container di dalam navbar */
+/* Container di dalam navbar (tetap sama) */
 .navbar .container-nav {
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
-/* Navbar-brand dengan hover interaktif */
+/* Navbar-brand dengan hover interaktif (tetap sama) */
 .navbar-brand {
   margin-left: 12px;
   transition: transform 180ms ease, filter 180ms ease;
@@ -60,7 +62,7 @@ body {
   filter: brightness(0.85) grayscale(100%); /* efek monokrom */
 }
 
-/* Nav-link efek hover */
+/* Nav-link efek hover (tetap sama) */
 .navbar .nav-link, .navbar .nav-item > a {
   color: #333 !important; /* monokrom gelap */
   margin-right: 8px;
@@ -82,34 +84,35 @@ body {
   box-shadow: inset 0 -2px 0 rgba(0,0,0,0.08);
 }
 
-/* Animasi masuk navbar */
+/* Animasi masuk navbar (tetap sama, tapi adjust translateY jika perlu untuk fixed) */
 @keyframes navbar-enter {
   0% { opacity: 0; transform: translateX(-50%) translateY(-30px) scale(0.95); }
   60% { opacity: 1; transform: translateX(-50%) translateY(10px) scale(1.05); }
   100% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
 }
 
+/* Tambahan: Pastikan responsif untuk mobile (opsional, jika navbar terlalu lebar) */
+@media (max-width: 768px) {
+  .navbar {
+    left: 50%;
+    transform: translateX(-50%) translateY(0); /* Hilangkan translateY hover di mobile jika konflik */
+    padding: 6px 6px;
+    max-width: 95vw;
+  }
+  .navbar .container-nav {
+    flex-wrap: wrap; /* Wrap links jika terlalu panjang di mobile */
+    gap: 8px;
+  }
+  .navbar .nav-link {
+    margin-right: 4px;
+    padding: 4px 8px;
+    font-size: 0.9rem;
+  }
+}
+
 /* Padding untuk main content agar tidak tertutup navbar */
 main#content {
   padding-top: 90px;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .navbar {
-    top: 12px;
-    padding: 6px 12px;
-    width: calc(100% - 32px);
-    max-width: 520px;
-  }
-  .navbar .container-nav {
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-  .navbar .nav-link, .navbar .nav-item > a {
-    padding: 6px 8px;
-    font-size: 14px;
-  }
 }
 
 /* Custom 404 Styles */
