@@ -1,170 +1,159 @@
 .profile-container {
-  max-width: 900px;
-  margin: 50px auto;
-  padding: 40px;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 30px;
   background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
   font-family: 'Poppins', sans-serif;
 }
 
-/* ===== HEADER ===== */
+/* Header */
 .profile-header {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
-
 .profile-photo {
-  width: 160px;
-  height: 160px;
-  object-fit: cover;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
-  border: 4px solid var(--accent, #007bff);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 3px solid var(--accent, #4a90e2);
 }
-.profile-photo:hover {
-  transform: scale(1.08);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
-}
-
 .profile-name {
   font-family: "Press Start 2P", sans-serif;
-  font-size: 28px;
-  margin: 15px 0 5px 0;
-  color: var(--text-color, #222);
+  font-size: 24px;
+  margin: 12px 0 5px;
 }
-
 .profile-role {
-  font-size: 16px;
-  color: #777;
+  font-size: 15px;
+  color: #555;
 }
 
-/* ===== SECTION ===== */
+/* Sections */
 .profile-section {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 .profile-section h2 {
   font-size: 20px;
+  color: var(--accent, #4a90e2);
   margin-bottom: 15px;
-  color: var(--accent, #007bff);
-  border-bottom: 2px solid var(--accent, #007bff);
+  border-bottom: 2px solid var(--accent, #4a90e2);
   display: inline-block;
-  padding-bottom: 5px;
+  padding-bottom: 4px;
 }
 
-/* ===== DATA DIRI ===== */
-.profile-details {
+/* About & Story */
+.about-content, .story-content {
   display: flex;
-  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
   flex-wrap: wrap;
-  gap: 20px;
 }
-.detail-item h3 {
-  margin-bottom: 5px;
-  font-size: 14px;
-  color: var(--accent, #007bff);
+.about-content img, .story-content img {
+  width: 40%;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
 }
-.detail-item p {
-  margin: 0;
-  font-size: 14px;
-  color: #555;
+.about-content p, .story-content p {
+  flex: 1;
+  font-size: 15px;
+  color: #444;
 }
 
-/* ===== SOCIAL MEDIA ===== */
-.social-links {
+/* Hobbies & Interests */
+.hobby-list {
   display: flex;
-  justify-content: center;
   gap: 20px;
-  font-size: 26px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-.social-links a {
-  color: #555;
-  transition: color 0.3s ease, transform 0.3s ease;
+.hobby-item {
+  text-align: center;
+  width: 200px;
 }
-.social-links a:hover {
-  color: var(--accent, #007bff);
-  transform: scale(1.2);
+.hobby-item img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+}
+.hobby-item p {
+  font-size: 14px;
+  color: #333;
 }
 
-/* ===== TIMELINE (Pengalaman, Pendidikan, Lomba, Pelatihan) ===== */
+/* Timeline */
 .timeline {
   list-style: none;
   padding: 0;
 }
 .timeline li {
-  margin-bottom: 20px;
-  padding-left: 20px;
-  border-left: 3px solid var(--accent, #007bff);
+  margin-bottom: 15px;
+  padding-left: 18px;
+  border-left: 3px solid var(--accent, #4a90e2);
   position: relative;
 }
 .timeline li::before {
   content: "";
   position: absolute;
-  left: -8px;
-  top: 5px;
-  width: 12px;
-  height: 12px;
-  background: var(--accent, #007bff);
+  left: -7px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  background: var(--accent, #4a90e2);
   border-radius: 50%;
 }
 .timeline h3 {
   margin: 0;
-  font-size: 16px;
-  color: #222;
+  font-size: 15px;
 }
 .timeline span {
-  font-size: 13px;
-  color: #666;
+  font-size: 12px;
+  color: #777;
 }
 .timeline p {
-  margin: 5px 0 0 0;
   font-size: 14px;
+  margin-top: 4px;
   color: #444;
 }
 
-/* ===== PROJECTS ===== */
+/* Projects */
 .project-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 20px;
 }
 .project-card {
-  padding: 20px;
-  border: 1px solid #eee;
+  background: #fafafa;
   border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .project-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+.project-card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
 }
 .project-card h3 {
-  margin: 0 0 10px;
   font-size: 16px;
-  color: var(--accent, #007bff);
+  margin-bottom: 6px;
 }
 .project-card p {
   font-size: 14px;
   color: #555;
 }
 
-/* ===== SKILLS ===== */
-.skills-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-.skills-list li {
-  background: #f5f5f5;
-  border: 1px solid #ddd;
-  padding: 8px 14px;
-  border-radius: 8px;
-  font-size: 14px;
-  color: #333;
-  transition: background 0.3s ease, transform 0.3s ease;
-}
-.skills-list li:hover {
-  background: var(--accent, #007bff);
-  color: #fff;
-  transform: translateY(-2px);
+/* Responsive */
+@media (max-width: 768px) {
+  .about-content img, .story-content img {
+    width: 100%;
+  }
+  .hobby-item {
+    width: 45%;
+  }
 }
