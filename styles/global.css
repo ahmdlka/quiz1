@@ -114,11 +114,8 @@ main#content {
 
 /* Custom 404 Styles */
 .error-container {
-  background-color: #f8f9fa;
+  background-color: transparent;
   padding: 2rem;
-  border-radius: 10px;
-  border: 1px solid #dee2e6;
-  font-family: 'Poppins', sans-serif;
 }
 
 .error-heading {
@@ -132,7 +129,7 @@ main#content {
 .error-lead {
   color: black !important;
   font-family: "Press Start 2P", system-ui;
-  font-size: 35px;
+  font-size: 25px;
   font-weight: 400;
   margin-bottom: 1rem;
 }
@@ -146,7 +143,7 @@ main#content {
 
 .error-btn {
   background-color: #242424;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Google Sans Code", monospace;
   font-weight: 600;
   padding: 0.75rem 2rem;
   border-radius: 5px;
