@@ -39,7 +39,10 @@ async function loadContent(path) {
     content.innerHTML = html;
     pageStyle.setAttribute("href", route.css);
   } catch (err) {
-    content.innerHTML = "<h2>404 Page Not Found</h2>";
+    content.innerHTML = `
+      <h2>404</h2>
+      <h3>Page Not Found</h3>
+    `;
     pageStyle.setAttribute("href", "");
     console.error(err);
   }

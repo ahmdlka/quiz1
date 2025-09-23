@@ -92,7 +92,7 @@ main#content {
   padding-top: 90px;
 }
 
-h2 {
+.container h2 {
   font-family: "Press Start 2P", system-ui;
   font-weight: 400;
   font-style: normal;
@@ -104,7 +104,7 @@ h2 {
   margin-top: 300px;
 }
 
-h3 {
+.container h3 {
   font-family: "Press Start 2P", system-ui;
   font-weight: 400;
   font-style: normal;
