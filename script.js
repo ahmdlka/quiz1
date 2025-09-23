@@ -11,31 +11,50 @@ const routes = {
   "/quiz1/tourist": { html: "/quiz1/templates/tourist.html", css: "/quiz1/styles/tourist.css" },
 };
 
-// Normalisasi path (hapus trailing slash)
+// Normalisasi path (hapus trailing slash, fallback root ke /quiz1)
 function normalizePath(path) {
   if (!path || path === "/") return "/quiz1";
   return path.endsWith("/") && path !== "/" ? path.slice(0, -1) : path;
 }
 
+// Fungsi untuk tampilkan 404 (custom, bisa diganti dengan fetch template jika mau)
+function show404(path) {
+  content.innerHTML = `
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-6 text-center">
+        <h1 class="display-1 fw-bold text-danger">404</h1>
+        <p class="lead">Page Not Found</p>
+        <p>The requested path "${path}" does not exist.</p>
+        <a href="/quiz1" class="btn btn-primary">Go to Home</a>
+      </div>
+    </div>
+  `;
+  // Hapus CSS khusus halaman
+  pageStyle.setAttribute("href", "");
+}
+
 // Load konten + CSS
 async function loadContent(path) {
   const normalizedPath = normalizePath(path);
-  const route = routes[normalizedPath] || routes["/quiz1"]; // fallback langsung ke home
+  
+  // Cek jika route tidak terdaftar -> tampilkan 404
+  if (!routes[normalizedPath]) {
+    show404(normalizedPath);
+    return;
+  }
+
+  const route = routes[normalizedPath];
 
   try {
     const res = await fetch(route.html);
-    if (!res.ok) throw new Error("File not found");
+    if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
     const html = await res.text();
     content.innerHTML = html;
     pageStyle.setAttribute("href", route.css);
   } catch (err) {
-    // kalau file error juga fallback ke home
-    const home = routes["/quiz1"];
-    const res = await fetch(home.html);
-    const html = await res.text();
-    content.innerHTML = html;
-    pageStyle.setAttribute("href", home.css);
-    console.error("Error load, fallback ke home:", err);
+    // Jika fetch gagal (file hilang/error), tampilkan 404
+    show404(normalizedPath);
+    console.error("Error loading content:", err);
   }
 }
 
@@ -45,11 +64,13 @@ document.addEventListener("click", (e) => {
   if (!link) return;
 
   e.preventDefault();
-  const path = normalizePath(link.getAttribute("href"));
+  const href = link.getAttribute("href");
+  const normalizedHref = normalizePath(href);
 
-  if (window.location.pathname !== path) {
-    window.history.pushState({}, "", path);
-    loadContent(path);
+  // Hanya pushState jika path berbeda
+  if (window.location.pathname !== normalizedHref) {
+    window.history.pushState({}, "", normalizedHref);
+    loadContent(normalizedHref);
   }
 });
 
@@ -60,12 +81,15 @@ window.addEventListener("popstate", () => {
 
 // Load pertama kali
 window.addEventListener("DOMContentLoaded", () => {
+  let initialPath = window.location.pathname;
+  
+  // Handle restore dari sessionStorage (dari 404.html atau direct access)
   if (sessionStorage.redirect) {
-    const path = sessionStorage.redirect;
+    initialPath = normalizePath(sessionStorage.redirect);
     delete sessionStorage.redirect;
-    window.history.replaceState({}, "", path);
-    loadContent(path);
-  } else {
-    loadContent(window.location.pathname);
+    // Update history untuk path asli
+    window.history.replaceState({}, "", initialPath);
   }
+  
+  loadContent(initialPath);
 });
