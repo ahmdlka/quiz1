@@ -1,3 +1,8 @@
+body {
+  background: url('../assets/background.png') repeat;
+  background-size: cover; /* bisa cover, contain, atau ukuran custom */
+  background-position: center;/* bisa repeat, no-repeat, atau cover */
+}
 .profile-container {
   max-width: 900px;
   margin: 50px auto;

@@ -8,9 +8,7 @@ body {
   font-family: "Google Sans Code", monospace;
   margin: 0;
   min-height: 100vh;
-  background: url('../assets/background.png') repeat;
-  background-size: cover; /* bisa cover, contain, atau ukuran custom */
-  background-position: center;/* bisa repeat, no-repeat, atau cover */
+  background: transparent;
 }
 
 /* Floating centered navbar styles */
