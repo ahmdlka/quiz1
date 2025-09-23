@@ -4,6 +4,7 @@
   justify-content: center;
   gap: 100px; /* lebih lega */
   margin-bottom: 100px;
+  margin-top: 110px;
   flex-wrap: wrap;
 }
 
