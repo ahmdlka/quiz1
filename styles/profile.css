@@ -1,6 +1,6 @@
 body {
   background: url('../assets/background.png') repeat;
-  background-size: cover; /* bisa cover, contain, atau ukuran custom */
+  background-size: contain; /* bisa cover, contain, atau ukuran custom */
   background-position: center;/* bisa repeat, no-repeat, atau cover */
 }
 .profile-container {

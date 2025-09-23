@@ -1,6 +1,6 @@
 body {
   background: url('../assets/background.png') repeat;
-  background-size: cover; /* bisa cover, contain, atau ukuran custom */
+  background-size: contain; /* bisa cover, contain, atau ukuran custom */
   background-position: center;/* bisa repeat, no-repeat, atau cover */
 }
 
@@ -65,6 +65,7 @@ body {
 
 .container-home h2, h1, p {
   margin: 0.4rem 0;
+  text-align: left;
   opacity: 0;
   transform: translateX(-50px); /* slide dari kiri */
   animation: slideIn 1s ease forwards;
