@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <script>
+    // Simpan path penuh yang diminta
+    const redirectTo = window.location.pathname + window.location.search + window.location.hash;
+    // Redirect ke index.html tapi path tetap di URL
+    sessionStorage.redirect = redirectTo;
+    window.location.href = "/quiz1/";
+  </script>
+</head>
+<body>
+  <p>Redirecting...</p>
+</body>
+</html>
