@@ -101,7 +101,7 @@ h2 {
   background: black;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-top: 600px;
+  margin-top: 300px;
 }
 
 h2 {
@@ -113,7 +113,6 @@ h2 {
   background: black;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-top: 600px;
 }
 
 /* Responsive adjustments */
