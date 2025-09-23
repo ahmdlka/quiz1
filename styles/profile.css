@@ -8,27 +8,6 @@
   font-family: "Google Sans Code", monospace;
 }
 
-/* Header */
-.profile-header {
-  text-align: center;
-  margin-bottom: 25px;
-}
-.profile-photo {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  border: 3px solid var(--accent, #4a90e2);
-}
-.profile-name {
-  font-family: "Press Start 2P", sans-serif;
-  font-size: 24px;
-  margin: 12px 0 5px;
-}
-.profile-role {
-  font-size: 15px;
-  color: #555;
-}
-
 /* Sections */
 .profile-section {
   margin-bottom: 30px;
@@ -54,7 +33,15 @@
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.1);
 }
-
+.profile-name {
+  font-family: "Press Start 2P", sans-serif;
+  font-size: 24px;
+  margin: 12px 0 5px;
+}
+.profile-role {
+  font-size: 15px;
+  color: #555;
+}
 .about-content img {
   width: 20%;
   border-radius: 12px;
