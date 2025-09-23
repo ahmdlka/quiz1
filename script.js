@@ -11,13 +11,13 @@ const routes = {
   "/quiz1/tourist": { html: "/quiz1/templates/tourist.html", css: "/quiz1/styles/tourist.css" },
 };
 
-// Fungsi untuk normalisasi path (hapus trailing slash)
+// Normalisasi path (hapus trailing slash)
 function normalizePath(path) {
   if (!path) return "/quiz1";
   return path.endsWith("/") && path !== "/" ? path.slice(0, -1) : path;
 }
 
-// Fungsi load konten + CSS
+// Load konten + CSS
 async function loadContent(path) {
   const normalizedPath = normalizePath(path);
   const route = routes[normalizedPath] || routes["/quiz1"];
@@ -35,19 +35,19 @@ async function loadContent(path) {
   }
 }
 
-// Handle klik link
-document.querySelectorAll("nav a, .page-box").forEach((link) => {
-  link.addEventListener("click", function(e) {
-    e.preventDefault(); // mencegah browser reload / 404
-    const path = normalizePath(link.getAttribute("href"));
-    console.log(path);
-    if (window.location.pathname !== path) {
-      window.history.pushState({}, "", path); // update URL
-      loadContent(path); // fetch konten & CSS
-    }
-  });
-});
+// Delegasi klik link (navbar & page-box)
+document.addEventListener("click", (e) => {
+  const link = e.target.closest("a.nav-link, a.page-box");
+  if (!link) return; // bukan link target
 
+  e.preventDefault();
+  const path = normalizePath(link.getAttribute("href"));
+
+  if (window.location.pathname !== path) {
+    window.history.pushState({}, "", path);
+    loadContent(path);
+  }
+});
 
 // Back/forward browser
 window.addEventListener("popstate", () => {
@@ -55,4 +55,6 @@ window.addEventListener("popstate", () => {
 });
 
 // Load pertama kali
-loadContent(window.location.pathname);
+window.addEventListener("DOMContentLoaded", () => {
+  loadContent(window.location.pathname);
+});
