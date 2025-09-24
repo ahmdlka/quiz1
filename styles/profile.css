@@ -146,8 +146,9 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 .hobby-item p {
-  font-family: "Press Start 2P", cursive;
-  font-size: 10px;
+  font-family: "Google Sans Code", monospace;
+  font-size: 16px;
+  font-weight: 700;
   color: #000000;
   margin: 0;
   font-weight: 500;
