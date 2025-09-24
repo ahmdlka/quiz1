@@ -1,7 +1,7 @@
 .profile-container {
   max-width: 1000px;
   margin: 40px auto;
-  padding: 50px;
+  padding: 45px;
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.08); /* Pertahankan subtle shadow di container utama */
@@ -19,7 +19,7 @@
   font-family: "Press Start 2P", system-ui;
   font-weight: 400;
   font-style: normal;
-  font-size: 10px;
+  font-size: 20px;
   background: var(--gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
