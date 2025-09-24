@@ -9,7 +9,7 @@
 .hometown-container {
   max-width: 1000px;
   margin: 40px auto;
-  padding: 30px 20px; /* Naik padding untuk ruang lebih */
+  padding: 35px; /* Naik padding untuk ruang lebih */
   font-family: 'Poppins', sans-serif;
   line-height: 1.7; /* Naik untuk readability */
   background: var(--bg-gradient); /* Subtle gradient untuk depth */
@@ -20,7 +20,7 @@
 /* Header - Lebih impactful */
 .hometown-header {
   text-align: center;
-  margin-bottom: 60px; /* Naik untuk white space */
+  margin-bottom: 40px; /* Naik untuk white space */
   padding: 20px; /* Tambah padding internal */
 }
 .hometown-header h1 {
