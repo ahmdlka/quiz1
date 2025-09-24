@@ -1,7 +1,7 @@
 .profile-container {
   max-width: 1000px;
   margin: 40px auto;
-  padding: 30px;
+  padding: 50px;
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.08); /* Pertahankan subtle shadow di container utama */
@@ -19,12 +19,12 @@
   font-family: "Press Start 2P", system-ui;
   font-weight: 400;
   font-style: normal;
-  font-size: 20px;
+  font-size: 10px;
   background: var(--gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 20px; /* Naik untuk spacing sebelum konten */
-  border-bottom: 2px solid var(--gradient);
+  border-bottom: 2px solid #3688ed;
   display: inline-block;
   padding-bottom: 4px;
 }
@@ -81,10 +81,13 @@
 
 /* Typography - Clean dan readable, line-height lebih tinggi */
 .profile-name {
-  font-family: "Press Start 2P", cursive;
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 400;
+  font-style: normal;
   font-size: 28px;
-  margin: 0 0 8px 0;
-  color: var(--accent, #4a90e2);
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   letter-spacing: 2px;
   line-height: 1.2;
   /* Hilangkan text-shadow untuk clean */
@@ -125,7 +128,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 10px; /* Pertahankan minimal padding */
+  padding: 10px 35px; /* Pertahankan minimal padding */
   /* Hilangkan background dan border-radius untuk flat */
   transition: transform 0.3s ease;
 }
@@ -144,7 +147,7 @@
 }
 .hobby-item p {
   font-family: "Press Start 2P", cursive;
-  font-size: 15px;
+  font-size: 10px;
   color: #000000;
   margin: 0;
   font-weight: 500;
