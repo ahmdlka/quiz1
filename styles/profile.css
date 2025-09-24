@@ -8,9 +8,16 @@
   font-family: "Google Sans Code", monospace;
 }
 
-/* Sections */
+/* Sections - Tambah border subtle untuk pemisah */
 .profile-section {
   margin-bottom: 30px;
+  padding: 20px; /* Tambah padding internal untuk ruang bernapas */
+  border: 1px solid rgba(0,0,0,0.05); /* Border halus untuk framing */
+  border-radius: 12px;
+  transition: box-shadow 0.3s ease; /* Smooth shadow on hover jika section di-hover */
+}
+.profile-section:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06); /* Efek lift subtle */
 }
 .profile-section h2 {
   font-size: 20px;
@@ -19,62 +26,127 @@
   border-bottom: 2px solid var(--accent, #4a90e2);
   display: inline-block;
   padding-bottom: 4px;
+  font-weight: 600; /* Tambah weight untuk bold */
 }
 
-/* About & Story */
+/* About & Story - Layout lebih rapi dengan flex dan wrapper teks */
 .about-content, .story-content {
   display: flex;
-  align-items: center;
-  gap: 20px;
+  align-items: flex-start; /* Align top untuk teks tidak center jika tinggi beda */
+  gap: 30px; /* Naik dari 20px untuk spacing lebih lega */
   flex-wrap: wrap;
+  position: relative; /* Untuk pseudo-element jika perlu */
 }
 .story-content img {
   width: 40%;
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease; /* Hover effect */
 }
-.profile-name {
-  font-family: "Press Start 2P", sans-serif;
-  font-size: 24px;
-  margin: 12px 0 5px;
+.story-content img:hover {
+  transform: scale(1.02); /* Subtle zoom */
 }
-.profile-role {
-  font-size: 15px;
-  color: #555;
-}
+
+/* About specific - Img lebih proporsional */
 .about-content img {
-  width: 20%;
+  width: 25%; /* Naik dari 20% untuk visual balance */
+  min-width: 150px; /* Minimal size agar tidak terlalu kecil */
+  height: auto;
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  object-fit: cover; /* Pastikan img tidak distort */
+}
+.about-content img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
-.about-content p, .story-content p {
+/* Wrapper teks baru untuk struktur rapi (opsional, hapus jika tidak pakai HTML wrapper) */
+.about-text, .story-text {
   flex: 1;
-  font-size: 15px;
-  color: #444;
+  min-width: 300px; /* Pastikan teks punya ruang minimal */
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Spacing antar elemen teks */
 }
 
-/* Hobbies & Interests */
-.hobby-list {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
+/* Typography - Lebih rapi dan readable */
+.profile-name {
+  font-family: "Press Start 2P", cursive; /* Ganti sans-serif ke cursive untuk retro feel */
+  font-size: 28px; /* Naik dari 24px untuk impact */
+  margin: 0 0 8px 0; /* Hapus margin atas, tambah bawah */
+  color: var(--accent, #4a90e2); /* Gunakan accent color untuk nama */
+  letter-spacing: 2px; /* Spacing untuk rapi */
+  line-height: 1.2;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* Subtle shadow untuk pop */
 }
-.hobby-item {
-  text-align: center;
-  width: 200px;
+.profile-role {
+  font-size: 16px; /* Naik dari 15px */
+  color: #666; /* Lebih soft dari #555 */
+  margin: 0 0 12px 0;
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
-.hobby-item img {
-  width: 100%;
-  border-radius: 12px;
-  margin-bottom: 8px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+.about-content p, .story-content p {
+  flex: none; /* Hapus flex:1 agar tidak stretch */
+  font-size: 16px; /* Naik dari 15px untuk readability */
+  color: #444;
+  line-height: 1.6; /* Tambah line-height untuk teks panjang */
+  margin: 0; /* Reset margin */
+  text-align: left; /* Pastikan left-align untuk paragraf */
 }
-.hobby-item p {
-  font-size: 14px;
-  color: #333;
+
+/* Responsif - Rapi di tablet dan mobile */
+@media (max-width: 768px) { /* Tablet */
+  .profile-container {
+    margin: 20px auto;
+    padding: 20px;
+  }
+  .profile-section {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  .about-content, .story-content {
+    gap: 20px;
+    flex-direction: column; /* Stack vertikal di tablet jika ruang sempit */
+    align-items: center; /* Center untuk simetri */
+    text-align: center; /* Center teks di tablet */
+  }
+  .about-content img {
+    width: 40%; /* Lebih besar di tablet */
+    max-width: 200px;
+  }
+  .profile-name {
+    font-size: 24px; /* Kurangi di tablet */
+  }
 }
+
+@media (max-width: 576px) { /* Mobile */
+  .profile-container {
+    margin: 10px auto;
+    padding: 15px;
+  }
+  .about-content, .story-content {
+    gap: 15px;
+  }
+  .about-content img, .story-content img {
+    width: 100%; /* Full width di mobile */
+    max-width: 250px; /* Batasi agar tidak terlalu besar */
+  }
+  .profile-name {
+    font-size: 20px;
+    letter-spacing: 1px;
+  }
+  .profile-role, .about-content p {
+    font-size: 15px;
+  }
+  .about-text {
+    min-width: auto; /* Hapus min-width di mobile */
+    gap: 6px;
+  }
+}
+
 
 /* Timeline */
 .timeline {
