@@ -1,9 +1,9 @@
 <div class="profile-container">
-  <!-- About -->
+  <!-- About (sudah ada wrapper) -->
   <div class="profile-section about">
     <div class="about-content">
       <img src="assets/about-me.jpg" alt="About Me">
-      <div class="about-text"> <!-- Opsional: Wrapper baru untuk teks agar lebih terstruktur -->
+      <div class="about-text">
         <h1 class="profile-name">Ahmad Loka Arziki</h1>
         <p class="profile-role">Informatics Student | ITS Surabaya</p>
         <p>
@@ -15,7 +15,7 @@
     </div>
   </div>
 
-  <!-- Hobbies -->
+  <!-- Hobbies (tidak berubah) -->
   <div class="profile-section hobbies">
     <h2>My Hobbies</h2>
     <div class="hobby-list">
@@ -34,21 +34,23 @@
     </div>
   </div>
 
-  <!-- Story -->
+  <!-- Story (Tambah wrapper .story-text untuk batasi teks) -->
   <div class="profile-section story">
     <h2>My Story at Informatics</h2>
     <div class="story-content">
       <img src="assets/its-campus.jpg" alt="ITS Campus">
-      <p>
-        Starting my journey in Informatics at ITS has been exciting and full of discoveries.
-        From basic programming in C/C++ to learning about operating systems, databases,
-        and algorithms — every step teaches me how powerful technology can be.  
-        Being part of a vibrant campus community motivates me to grow and contribute more.
-      </p>
+      <div class="story-text"> <!-- Tambahan wrapper ini -->
+        <p>
+          Starting my journey in Informatics at ITS has been exciting and full of discoveries.
+          From basic programming in C/C++ to learning about operating systems, databases,
+          and algorithms — every step teaches me how powerful technology can be.  
+          Being part of a vibrant campus community motivates me to grow and contribute more.
+        </p>
+      </div>
     </div>
   </div>
 
-  <!-- Committee Experience -->
+  <!-- Committee Experience (tidak berubah) -->
   <div class="profile-section">
     <h2>Committee Experience</h2>
     <ul class="timeline">
@@ -70,7 +72,7 @@
     </ul>
   </div>
 
-  <!-- Projects -->
+  <!-- Projects (tidak berubah) -->
   <div class="profile-section">
     <h2>Projects</h2>
     <div class="project-list">
@@ -92,7 +94,7 @@
     </div>
   </div>
 
-  <!-- Interests -->
+  <!-- Interests (tidak berubah, asumsi mirip hobbies) -->
   <div class="profile-section interests">
     <h2>Fields I’m Interested In</h2>
     <div class="hobby-list">
