@@ -1,63 +1,181 @@
+/* Root variables - Tambah di global.css jika belum ada */
+:root {
+  --accent: #d4a574; /* Emas coklat hangat untuk tema Jawa */
+  --text-primary: #333;
+  --text-secondary: #666;
+  --bg-gradient: linear-gradient(135deg, #fff 0%, #f9f9f9 100%);
+}
+
 .hometown-container {
   max-width: 1000px;
   margin: 40px auto;
-  padding: 20px;
+  padding: 30px 20px; /* Naik padding untuk ruang lebih */
   font-family: 'Poppins', sans-serif;
-  line-height: 1.6;
+  line-height: 1.7; /* Naik untuk readability */
+  background: var(--bg-gradient); /* Subtle gradient untuk depth */
+  border-radius: 20px; /* Radius lebih lembut */
+  box-shadow: 0 8px 32px rgba(0,0,0,0.06); /* Shadow soft untuk modern look */
 }
 
+/* Header - Lebih impactful */
 .hometown-header {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 60px; /* Naik untuk white space */
+  padding: 20px; /* Tambah padding internal */
 }
 .hometown-header h1 {
-  font-family: "Press Start 2P", sans-serif;
-  font-size: 32px;
-  color: var(--accent, #007bff);
+  font-family: "Press Start 2P", cursive;
+  font-size: 40px; /* Naik dari 32px untuk impact */
+  color: var(--accent);
+  margin: 0 0 12px 0;
+  letter-spacing: 3px; /* Spacing untuk retro feel */
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
 }
 .hometown-header p {
-  font-size: 16px;
-  color: #555;
+  font-size: 18px; /* Naik dari 16px */
+  color: var(--text-secondary);
+  max-width: 600px; /* Batasi agar tidak terlalu lebar */
+  margin: 0 auto;
+  font-weight: 400;
 }
 
-/* Section layout */
+/* Section layout - Lebih lega dan smooth */
 .hometown-section {
   display: flex;
   align-items: center;
-  margin-bottom: 60px;
-  gap: 30px;
+  margin-bottom: 80px; /* Naik untuk spacing antar section */
+  gap: 40px; /* Naik dari 30px untuk balance */
   flex-wrap: wrap;
+  position: relative; /* Untuk divider line */
+}
+.hometown-section::after { /* Subtle divider line antar section */
+  content: "";
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 1px;
+}
+.hometown-section:last-of-type::after { /* Hilangkan divider di section terakhir */
+  display: none;
 }
 .hometown-section.reverse {
   flex-direction: row-reverse;
 }
 .hometown-section img {
   width: 45%;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  max-width: 450px; /* Batasi agar tidak melebihi container */
+  max-height: 400px; /* Konsistensi tinggi */
+  border-radius: 16px; /* Radius lebih lembut */
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08); /* Shadow lebih soft */
+  object-fit: cover; /* Auto-crop/shrink untuk rasio 16:9 landscape */
+  object-position: center;
+  transition: transform 0.4s ease, filter 0.4s ease; /* Smooth hover */
+}
+.hometown-section img:hover {
+  transform: scale(1.05); /* Subtle zoom */
+  filter: brightness(1.05); /* Tingkatkan brightness untuk vibrancy */
 }
 .section-text {
   flex: 1;
+  min-width: 300px; /* Pastikan teks punya ruang */
 }
 .section-text h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
-  color: var(--accent, #007bff);
+  font-size: 28px; /* Naik dari 24px */
+  margin-bottom: 15px; /* Spacing lebih */
+  color: var(--accent);
+  font-weight: 600;
+  position: relative;
+}
+.section-text h2::after { /* Underline subtle untuk h2 */
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 1px;
 }
 .section-text p {
-  font-size: 15px;
-  color: #444;
+  font-size: 16px; /* Naik dari 15px */
+  color: var(--text-primary);
+  max-width: 550px; /* Batasi agar teks tidak melebihi, wrap alami */
+  hyphens: auto; /* Auto-wrap kata panjang */
+  word-wrap: break-word;
 }
 
-/* Responsif */
+/* Responsif - Clean di mobile/tablet */
 @media (max-width: 768px) {
+  .hometown-container {
+    margin: 20px auto;
+    padding: 20px 15px;
+    border-radius: 12px;
+  }
+  .hometown-header {
+    margin-bottom: 40px;
+    padding: 15px;
+  }
+  .hometown-header h1 {
+    font-size: 28px; /* Kurangi di tablet */
+    letter-spacing: 2px;
+  }
+  .hometown-header p {
+    font-size: 16px;
+  }
   .hometown-section {
-    flex-direction: column;
+    flex-direction: column; /* Stack vertikal */
+    gap: 25px;
+    margin-bottom: 60px;
+    text-align: center; /* Center teks di mobile */
   }
   .hometown-section.reverse {
     flex-direction: column;
   }
   .hometown-section img {
     width: 100%;
+    max-width: 100%;
+    max-height: 300px; /* Kurangi tinggi di tablet */
+  }
+  .section-text {
+    min-width: auto;
+  }
+  .section-text h2 {
+    font-size: 24px;
+  }
+  .section-text p {
+    font-size: 15px;
+    max-width: 100%; /* Full di mobile */
+    padding: 0 10px; /* Side padding untuk tidak edge */
+  }
+  .hometown-section::after {
+    bottom: -30px;
+    width: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hometown-header h1 {
+    font-size: 24px;
+  }
+  .hometown-header p {
+    font-size: 15px;
+  }
+  .hometown-section {
+    gap: 20px;
+    margin-bottom: 50px;
+  }
+  .hometown-section img {
+    max-height: 250px;
+  }
+  .section-text h2 {
+    font-size: 22px;
+  }
+  .section-text p {
+    font-size: 14px;
+    line-height: 1.6;
   }
 }
