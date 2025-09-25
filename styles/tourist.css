@@ -1,12 +1,3 @@
-/* Root variables */
-:root {
-  --accent: #d4a574; /* Emas hangat Jawa */
-  --text-primary: #333;
-  --text-secondary: #666;
-  --bg-gradient: linear-gradient(135deg, #f0f8f0 0%, #fff 100%); /* Hijau soft untuk wisata alam */
-  --overlay-bg: rgba(0, 0, 0, 0.7);
-}
-
 .tourist-container {
   max-width: 1200px;
   margin: 40px auto;

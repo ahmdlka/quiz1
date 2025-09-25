@@ -1,6 +1,10 @@
 :root {
-  --accent: #4a90e2;
+  --accent: #d4a574; /* Emas coklat hangat untuk tema Jawa */
+  --text-primary: #333;
+  --text-secondary: #666;
+  --bg-gradient: linear-gradient(135deg, #fff 0%, #f9f9f9 100%);
   --gradient: linear-gradient(45deg, rgb(86, 145, 255), rgb(0, 56, 152));
+  --overlay-bg: rgba(0, 0, 0, 0.7);
 }
 
 body {
