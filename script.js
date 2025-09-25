@@ -143,3 +143,27 @@ function setActiveNavLink() {
 window.addEventListener('DOMContentLoaded', setActiveNavLink);
 window.addEventListener('popstate', setActiveNavLink);
 
+// Page transition animations
+document.addEventListener('DOMContentLoaded', function() {
+  // Add entry animation class on load
+  document.body.classList.add('animate-entry');
+  
+  // Attach click event listeners to all anchor tags for transition
+  const anchors = document.querySelectorAll('a');
+  anchors.forEach(anchor => {
+    // Skip external links
+    if(anchor.hostname !== window.location.hostname) return;
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = this.href;
+      // Add exit animation
+      document.body.classList.remove('animate-entry');
+      document.body.classList.add('animate-exit');
+      // Wait for animation to complete (~500ms) then navigate
+      setTimeout(() => {
+        window.location.href = target;
+      }, 500);
+    });
+  });
+});
+
