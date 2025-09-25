@@ -1,0 +1,150 @@
+/* Root variables - Sesuaikan dengan global jika perlu */
+:root {
+  --accent: #d4a574; /* Emas hangat untuk tema kuliner Jawa */
+  --text-primary: #333;
+  --text-secondary: #666;
+  --bg-gradient: linear-gradient(135deg, #fff 0%, #fff8f0 100%); /* Nuansa hangat makanan */
+  --card-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.food-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 30px 20px;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.7;
+  background: var(--bg-gradient);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+}
+
+/* Header - Appetizing dan centered */
+.food-header {
+  text-align: center;
+  margin-bottom: 50px;
+  padding: 20px;
+}
+.food-header h1 {
+  font-family: "Press Start 2P", cursive;
+  font-size: 36px;
+  color: var(--accent);
+  margin: 0 0 12px 0;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+.food-header p {
+  font-size: 18px;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  font-weight: 400;
+}
+
+/* Food Grid - Clean cards layout */
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px; /* Spacing lega antar card */
+  justify-items: center;
+}
+.food-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden; /* Crop gambar ke radius */
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 350px; /* Batasi ukuran card */
+}
+.food-card:hover {
+  transform: translateY(-8px); /* Lift subtle */
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+}
+.food-card img {
+  width: 100%;
+  height: 250px; /* Fixed height untuk uniformity */
+  object-fit: cover; /* Auto-crop/shrink ke square-ish */
+  object-position: center;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+.food-card img:hover {
+  transform: scale(1.05);
+  filter: sepia(0.1) brightness(1.1); /* Subtle vintage food effect */
+}
+.card-text {
+  padding: 20px;
+  text-align: center;
+}
+.card-text h2 {
+  font-size: 22px;
+  margin: 0 0 10px 0;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.card-text p {
+  font-size: 15px;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.6;
+  hyphens: auto; /* Wrap kata panjang */
+}
+
+/* Responsif - Stack di mobile, kurangi ukuran */
+@media (max-width: 768px) {
+  .food-container {
+    margin: 20px auto;
+    padding: 20px 15px;
+    border-radius: 12px;
+  }
+  .food-header {
+    margin-bottom: 40px;
+    padding: 15px;
+  }
+  .food-header h1 {
+    font-size: 28px;
+    letter-spacing: 1.5px;
+  }
+  .food-header p {
+    font-size: 16px;
+  }
+  .food-grid {
+    grid-template-columns: 1fr; /* Single column */
+    gap: 25px;
+  }
+  .food-card {
+    max-width: 100%;
+  }
+  .food-card img {
+    height: 200px; /* Kurangi di tablet */
+  }
+  .card-text {
+    padding: 15px;
+  }
+  .card-text h2 {
+    font-size: 20px;
+  }
+  .card-text p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 576px) {
+  .food-header h1 {
+    font-size: 24px;
+  }
+  .food-header p {
+    font-size: 15px;
+  }
+  .food-grid {
+    gap: 20px;
+  }
+  .food-card img {
+    height: 180px;
+  }
+  .card-text h2 {
+    font-size: 18px;
+  }
+  .card-text p {
+    line-height: 1.5;
+  }
+}
