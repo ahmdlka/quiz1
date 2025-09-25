@@ -4,10 +4,8 @@
   <meta charset="UTF-8">
   <title>Redirecting...</title>
   <script>
-    // Simpan path asli
     const redirectTo = window.location.pathname + window.location.search + window.location.hash;
     sessionStorage.redirect = redirectTo;
-    // Arahkan ke index.html
     window.location.href = "/quiz1/";
   </script>
 </head>

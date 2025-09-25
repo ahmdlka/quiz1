@@ -144,8 +144,8 @@ function initFoodHover() {
     });
   });
 }
+
 // Panggil init setelah load konten food
-// Di fungsi loadPage, setelah content.innerHTML = ..., tambah:
 if (window.location.pathname.includes('/food')) {
   initFoodHover();
 }
