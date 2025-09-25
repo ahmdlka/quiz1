@@ -117,8 +117,56 @@ function initFoodHover() {
     });
   });
 }
+
+// Profile Animations - Initial load + scroll-triggered
+function initProfileAnimations() {
+  const container = document.querySelector('.profile-container');
+  const sections = document.querySelectorAll('.profile-section');
+
+  // Initial Load Animation: Trigger setelah DOM ready
+  if (container) {
+    setTimeout(() => {
+      container.classList.add('loaded');
+    }, 100); // Delay kecil untuk feel natural
+  }
+
+  // Scroll-Triggered Animations via Intersection Observer
+  const observerOptions = {
+    threshold: 0.2, // Trigger saat 20% elemen visible
+    rootMargin: '0px 0px -50px 0px' // Trigger sedikit sebelum full visible
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Masuk viewport: Tambah animasi
+        entry.target.classList.add('animate-in');
+      } else {
+        // Keluar viewport: Reset untuk re-trigger (opsional, untuk infinite scroll feel)
+        entry.target.classList.remove('animate-in');
+      }
+    });
+  }, observerOptions);
+
+  // Observe setiap section (animasi cascade ke child via CSS)
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+
+  // Cleanup: Disconnect observer saat unload page (untuk SPA)
+  return () => {
+    observer.disconnect();
+  };
+}
+
 // Panggil init setelah load konten food
 // Di fungsi loadPage, setelah content.innerHTML = ..., tambah:
 if (window.location.pathname.includes('/food')) {
   initFoodHover();
+}
+
+// Panggil init setelah load konten profile
+// Di fungsi loadPage, setelah content.innerHTML = ..., tambah:
+if (window.location.pathname.includes('/profile')) {
+  initProfileAnimations();
 }
