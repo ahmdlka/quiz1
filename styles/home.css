@@ -102,3 +102,93 @@
     transform: translateX(0);
   }
 }
+
+/* =============================
+   Responsive - Tablet and Mobile
+   ============================= */
+
+/* Tablet (<= 992px) */
+@media (max-width: 992px) {
+  .page-selector {
+    gap: 48px;
+    margin-bottom: 72px;
+    margin-top: 96px;
+  }
+
+  .page-box {
+    width: 180px;
+    height: 210px;
+    padding: 16px;
+  }
+
+  .page-box img {
+    width: 110px;
+    height: 110px;
+  }
+
+  .container-home {
+    max-width: 720px;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .container-home h2 {
+    font-size: 22px;
+  }
+
+  .container-home h1 {
+    font-size: 34px;
+  }
+
+  .container-home p {
+    font-size: 16px;
+  }
+}
+
+/* Mobile (<= 576px) */
+@media (max-width: 576px) {
+  .page-selector {
+    gap: 16px;
+    margin-bottom: 48px;
+    margin-top: 84px;
+    padding: 0 12px;
+  }
+
+  .page-box {
+    width: calc(50% - 16px);
+    max-width: 220px;
+    min-width: 150px;
+    height: 190px;
+    padding: 14px;
+  }
+
+  .page-box img {
+    width: 96px;
+    height: 96px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+  }
+
+  .page-box span {
+    font-size: 11px;
+  }
+
+  .container-home {
+    max-width: 100%;
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+
+  .container-home h2 {
+    font-size: 18px;
+  }
+
+  .container-home h1 {
+    font-size: 26px;
+  }
+
+  .container-home p {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+}

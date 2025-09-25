@@ -113,6 +113,35 @@ body {
   }
 }
 
+/* Extra small devices (<= 576px) */
+@media (max-width: 576px) {
+  .navbar {
+    top: 12px;
+    padding: 6px 8px;
+    border-radius: 10px;
+  }
+
+  .navbar .container-nav {
+    justify-content: space-between;
+    gap: 6px;
+  }
+
+  .navbar .nav-link {
+    padding: 4px 6px;
+    margin-right: 2px;
+    font-size: 0.85rem;
+  }
+
+  /* Prevent hover elevation jumpiness on touch devices */
+  .navbar:hover {
+    transform: translateX(-50%);
+  }
+
+  main#content {
+    padding-top: 84px; /* Slightly smaller to reclaim space */
+  }
+}
+
 /* Padding untuk main content agar tidak tertutup navbar */
 main#content {
   padding-top: 90px;
