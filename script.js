@@ -94,18 +94,6 @@ window.addEventListener("DOMContentLoaded", () => {
   loadContent(initialPath);
 });
 
-New
-
-Share
-
-
-
-
-
-
-New Chat
-30 lines
-
 // Food Hover Effect - Blur others on hover
 function initFoodHover() {
   const foodItems = document.querySelectorAll('.food-item');
