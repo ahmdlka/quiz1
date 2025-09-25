@@ -203,3 +203,12 @@ main#content {
   font-size: 12px;
   color: var(--text-secondary);
 }
+
+/* Global typography overrides */
+p {
+  font-family: "Google Sans Code", monospace;
+}
+
+h1, h2, h3 {
+  font-family: "Press Start 2P", system-ui;
+}
