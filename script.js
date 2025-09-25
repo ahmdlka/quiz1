@@ -94,59 +94,31 @@ window.addEventListener("DOMContentLoaded", () => {
   loadContent(initialPath);
 });
 
-// Food Hover Effect - Blur seluruh page kecuali item hovered
+// Food Hover Effect - Blur others on hover
 function initFoodHover() {
   const foodItems = document.querySelectorAll('.food-item');
-  const body = document.body;
   
   foodItems.forEach(item => {
-    // Mouse enter: Blur page, focus item
     item.addEventListener('mouseenter', () => {
-      body.classList.add('page-blur');
       foodItems.forEach(other => {
         if (other !== item) {
-          other.classList.remove('focused');
+          other.classList.add('blurred');
         }
       });
       item.classList.add('focused');
+      item.classList.remove('blurred');
     });
     
-    // Mouse leave: Unblur page
     item.addEventListener('mouseleave', () => {
-      body.classList.remove('page-blur');
       foodItems.forEach(other => {
-        other.classList.remove('focused');
+        other.classList.remove('blurred');
       });
-    });
-  });
-
-  // Mobile Touch Support (opsional: simulasi hover via touchstart/end)
-  foodItems.forEach(item => {
-    item.addEventListener('touchstart', (e) => {
-      body.classList.add('page-blur');
-      foodItems.forEach(other => {
-        if (other !== item) {
-          other.classList.remove('focused');
-        }
-      });
-      item.classList.add('focused');
-      e.preventDefault(); // Hindari zoom default
-    });
-    
-    item.addEventListener('touchend', () => {
-      setTimeout(() => { // Delay untuk simulasi leave
-        body.classList.remove('page-blur');
-        foodItems.forEach(other => {
-          other.classList.remove('focused');
-        });
-      }, 2000); // Auto-unblur setelah 2 detik touch
+      item.classList.remove('focused');
     });
   });
 }
-
 // Panggil init setelah load konten food
 // Di fungsi loadPage, setelah content.innerHTML = ..., tambah:
 if (window.location.pathname.includes('/food')) {
-  // Delay sedikit agar DOM ready
-  setTimeout(initFoodHover, 100);
+  initFoodHover();
 }
