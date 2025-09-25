@@ -44,6 +44,14 @@
   font-weight: 400;
 }
 
+/* Page title styles */
+.page-title {
+  font-family: "Press Start 2P", system-ui;
+  font-size: 24px;
+  color: black;
+  margin-bottom: 20px;
+}
+
 /* Section layout - Lebih lega dan smooth */
 .hometown-section {
   display: flex;
