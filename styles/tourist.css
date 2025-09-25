@@ -1,14 +1,14 @@
-/* Root variables - Sesuaikan dengan global jika perlu */
+/* Root variables */
 :root {
-  --accent: #d4a574; /* Emas hangat untuk tema kuliner Jawa */
+  --accent: #d4a574; /* Emas hangat Jawa */
   --text-primary: #333;
   --text-secondary: #666;
-  --bg-gradient: linear-gradient(135deg, #fff 0%, #fff8f0 100%); /* Nuansa hangat makanan */
-  --card-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  --bg-gradient: linear-gradient(135deg, #f0f8f0 0%, #fff 100%); /* Hijau soft untuk wisata alam */
+  --overlay-bg: rgba(0, 0, 0, 0.7);
 }
 
-.food-container {
-  max-width: 1000px;
+.tourist-container {
+  max-width: 1200px;
   margin: 40px auto;
   padding: 30px 20px;
   font-family: 'Poppins', sans-serif;
@@ -18,13 +18,13 @@
   box-shadow: 0 8px 32px rgba(0,0,0,0.06);
 }
 
-/* Header - Appetizing dan centered */
-.food-header {
+/* Header */
+.tourist-header {
   text-align: center;
   margin-bottom: 50px;
   padding: 20px;
 }
-.food-header h1 {
+.tourist-header h1 {
   font-family: "Press Start 2P", cursive;
   font-size: 36px;
   color: var(--accent);
@@ -32,7 +32,7 @@
   letter-spacing: 2px;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
-.food-header p {
+.tourist-header p {
   font-size: 18px;
   color: var(--text-secondary);
   max-width: 600px;
@@ -40,111 +40,143 @@
   font-weight: 400;
 }
 
-/* Food Grid - Clean cards layout */
-.food-grid {
+/* Tourist Gallery Grid */
+.tourist-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px; /* Spacing lega antar card */
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* 3 kolom desktop, lebih lebar untuk landscape */
+  gap: 25px;
   justify-items: center;
 }
-.food-card {
-  background: #fff;
-  border-radius: 16px;
-  overflow: hidden; /* Crop gambar ke radius */
-  box-shadow: var(--card-shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  max-width: 350px; /* Batasi ukuran card */
-}
-.food-card:hover {
-  transform: translateY(-8px); /* Lift subtle */
-  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
-}
-.food-card img {
+.tourist-item {
+  position: relative;
   width: 100%;
-  height: 250px; /* Fixed height untuk uniformity */
-  object-fit: cover; /* Auto-crop/shrink ke square-ish */
+  max-width: 400px;
+  height: 250px; /* Fixed height untuk landscape uniformity */
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.tourist-item:hover,
+.tourist-item.focused {
+  transform: scale(1.1); /* Timbul */
+  box-shadow: 0 12px 40px rgba(212, 165, 116, 0.3); /* Shadow accent */
+  border: 3px solid var(--accent); /* Border timbul */
+  z-index: 100;
+}
+.tourist-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Auto-crop/shrink landscape 16:9 */
   object-position: center;
-  transition: transform 0.3s ease, filter 0.3s ease;
+  transition: filter 0.4s ease;
+  display: block;
 }
-.food-card img:hover {
-  transform: scale(1.05);
-  filter: sepia(0.1) brightness(1.1); /* Subtle vintage food effect */
+
+/* Page Blur Effect - Blur seluruh body kecuali focused item */
+body.page-blur {
+  filter: blur(3px);
+  transition: filter 0.4s ease;
 }
-.card-text {
-  padding: 20px;
+body.page-blur .tourist-item.focused,
+body.page-blur .tourist-item.focused img,
+body.page-blur .tourist-item.focused .overlay {
+  filter: none !important; /* Tetap sharp */
+  z-index: 100;
+}
+
+/* Overlay - Slide-up fade-in */
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, var(--overlay-bg));
+  color: white;
+  padding: 20px 15px 30px;
+  transform: translateY(100%);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  opacity: 0;
   text-align: center;
 }
-.card-text h2 {
-  font-size: 22px;
-  margin: 0 0 10px 0;
-  color: var(--accent);
+.tourist-item:hover .overlay,
+.tourist-item.focused .overlay {
+  transform: translateY(0);
+  opacity: 1;
+}
+.overlay h3 {
+  font-size: 20px;
+  margin: 0 0 8px 0;
   font-weight: 600;
   letter-spacing: 0.5px;
 }
-.card-text p {
-  font-size: 15px;
-  color: var(--text-primary);
+.overlay p {
+  font-size: 14px;
   margin: 0;
-  line-height: 1.6;
-  hyphens: auto; /* Wrap kata panjang */
+  line-height: 1.5;
+  opacity: 0.95;
 }
 
-/* Responsif - Stack di mobile, kurangi ukuran */
+/* Responsif */
 @media (max-width: 768px) {
-  .food-container {
+  .tourist-container {
     margin: 20px auto;
     padding: 20px 15px;
-    border-radius: 12px;
   }
-  .food-header {
-    margin-bottom: 40px;
-    padding: 15px;
-  }
-  .food-header h1 {
+  .tourist-header h1 {
     font-size: 28px;
-    letter-spacing: 1.5px;
   }
-  .food-header p {
+  .tourist-header p {
     font-size: 16px;
   }
-  .food-grid {
-    grid-template-columns: 1fr; /* Single column */
-    gap: 25px;
+  .tourist-gallery {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 2 kolom tablet */
+    gap: 20px;
   }
-  .food-card {
-    max-width: 100%;
+  .tourist-item {
+    max-width: 350px;
+    height: 220px;
   }
-  .food-card img {
-    height: 200px; /* Kurangi di tablet */
+  .tourist-item:hover,
+  .tourist-item.focused {
+    transform: scale(1.05);
   }
-  .card-text {
-    padding: 15px;
+  body.page-blur {
+    filter: blur(2px);
   }
-  .card-text h2 {
-    font-size: 20px;
+  .overlay {
+    padding: 15px 10px 25px;
   }
-  .card-text p {
-    font-size: 14px;
+  .overlay h3 {
+    font-size: 18px;
+  }
+  .overlay p {
+    font-size: 13px;
   }
 }
 
 @media (max-width: 576px) {
-  .food-header h1 {
-    font-size: 24px;
-  }
-  .food-header p {
-    font-size: 15px;
-  }
-  .food-grid {
+  .tourist-gallery {
+    grid-template-columns: 1fr; /* Single column mobile */
     gap: 20px;
   }
-  .food-card img {
-    height: 180px;
+  .tourist-item {
+    max-width: 100%;
+    height: 200px;
   }
-  .card-text h2 {
-    font-size: 18px;
+  .tourist-header h1 {
+    font-size: 24px;
   }
-  .card-text p {
-    line-height: 1.5;
+  body.page-blur {
+    filter: blur(1.5px);
+  }
+  /* Touch simulasi */
+  .tourist-item:active {
+    transform: scale(1.05);
+  }
+  .tourist-item:active .overlay {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
