@@ -212,3 +212,50 @@ p {
 h1, h2, h3 {
   font-family: "Press Start 2P", system-ui;
 }
+
+/* Smooth fade-in for text and divs on page load/navigate */
+@keyframes global-fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Apply only when body has .animate-entry to avoid layout flashes */
+.animate-entry div,
+.animate-entry p,
+.animate-entry h1,
+.animate-entry h2,
+.animate-entry h3,
+.animate-entry h4,
+.animate-entry h5,
+.animate-entry h6,
+.animate-entry span,
+.animate-entry a,
+.animate-entry li,
+.animate-entry small,
+.animate-entry strong,
+.animate-entry em,
+.animate-entry label {
+  animation: global-fade-in 500ms ease-in-out both;
+  will-change: opacity;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .animate-entry div,
+  .animate-entry p,
+  .animate-entry h1,
+  .animate-entry h2,
+  .animate-entry h3,
+  .animate-entry h4,
+  .animate-entry h5,
+  .animate-entry h6,
+  .animate-entry span,
+  .animate-entry a,
+  .animate-entry li,
+  .animate-entry small,
+  .animate-entry strong,
+  .animate-entry em,
+  .animate-entry label {
+    animation: none;
+  }
+}
