@@ -56,6 +56,8 @@ async function loadContent(path) {
     show404(normalizedPath);
     console.error("Error loading content:", err);
   }
+
+  setActiveNavLink();
 }
 
 // Delegasi klik link (navbar & page-box)
