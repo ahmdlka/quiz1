@@ -57,6 +57,10 @@ async function loadContent(path) {
     console.error("Error loading content:", err);
   }
 
+  // After loading new content, reset animations
+  document.body.classList.remove("animate-exit");
+  document.body.classList.add("animate-entry");
+
   setActiveNavLink();
 }
 
@@ -71,18 +75,33 @@ document.addEventListener("click", (e) => {
 
   // Hanya pushState jika path berbeda
   if (window.location.pathname !== normalizedHref) {
-    window.history.pushState({}, "", normalizedHref);
-    loadContent(normalizedHref);
+    // Trigger exit animation
+    document.body.classList.remove("animate-entry");
+    document.body.classList.add("animate-exit");
+    
+    setTimeout(() => {
+      window.history.pushState({}, "", normalizedHref);
+      loadContent(normalizedHref);
+    }, 500);
   }
 });
 
-// Back/forward browser
-window.addEventListener("popstate", () => {
-  loadContent(window.location.pathname);
-});
+// Highlight active navbar link based on current path
+function setActiveNavLink() {
+  const navLinks = document.querySelectorAll('.nav-link');
+  const currentPath = window.location.pathname;
 
-// Load pertama kali
-window.addEventListener("DOMContentLoaded", () => {
+  navLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
+}
+
+// Call the function on page load and after navigation
+window.addEventListener('DOMContentLoaded', () => {
   let initialPath = window.location.pathname;
   
   // Handle restore dari sessionStorage (dari 404.html atau direct access)
@@ -94,6 +113,9 @@ window.addEventListener("DOMContentLoaded", () => {
   }
   
   loadContent(initialPath);
+
+  // Ensure active nav link is set
+  setActiveNavLink();
 });
 
 // Food Hover Effect - Blur others on hover
@@ -124,21 +146,3 @@ function initFoodHover() {
 if (window.location.pathname.includes('/food')) {
   initFoodHover();
 }
-
-// Highlight active navbar link based on current path
-function setActiveNavLink() {
-  const navLinks = document.querySelectorAll('.nav-link');
-  const currentPath = window.location.pathname;
-
-  navLinks.forEach(link => {
-    if (link.getAttribute('href') === currentPath) {
-      link.classList.add('active');
-    } else {
-      link.classList.remove('active');
-    }
-  });
-}
-
-// Call the function on page load and after navigation
-window.addEventListener('DOMContentLoaded', setActiveNavLink);
-window.addEventListener('popstate', setActiveNavLink);
