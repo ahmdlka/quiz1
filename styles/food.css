@@ -10,17 +10,17 @@
   animation: fadeIn 0.8s ease-in-out;
 }
 
+/* Animation for page entry */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
+/* Header styles */
 .food-header {
   text-align: center;
   margin-bottom: 50px;
@@ -31,19 +31,14 @@
   font-family: "Press Start 2P", cursive;
   font-size: 36px;
   color: var(--accent);
-  margin: 0 0 12px 0;
-  letter-spacing: 2px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
 .food-header p {
   font-size: 18px;
   color: var(--text-secondary);
-  max-width: 600px;
-  margin: 0 auto;
-  font-weight: 400;
 }
 
+/* Page title styles */
 .page-title {
   font-family: "Press Start 2P", system-ui;
   font-size: 24px;
@@ -51,72 +46,68 @@
   margin-bottom: 20px;
 }
 
+/* Food Gallery Grid */
 .food-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 3-4 kolom desktop */
   gap: 25px;
   justify-items: center;
 }
-
 .food-item {
   position: relative;
   width: 100%;
   max-width: 300px;
-  height: 300px;
+  height: 300px; /* Fixed untuk uniformity */
   border-radius: 16px;
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
-
 .food-item:hover {
-  transform: scale(1.1);
-  box-shadow: 0 12px 40px rgba(212, 165, 116, 0.3);
+  transform: scale(1.1); /* Timbul */
+  box-shadow: 0 12px 40px rgba(212, 165, 116, 0.3); /* Shadow accent */
+  border: 3px solid var(--accent); /* Border timbul */
+  z-index: 10; /* Di atas yang lain */
 }
-
 .food-item img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* Auto-crop/shrink square */
   object-position: center;
   transition: filter 0.4s ease;
 }
-
-.food-item.blurred img {
+.food-item.blurred img { /* Blur via JS class */
   filter: blur(4px);
 }
-
 .food-item.focused img {
-  filter: none;
+  filter: none; /* Clear untuk focused */
 }
 
+/* Overlay - Hidden default, animasi slide-up fade-in */
 .overlay {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(transparent, var(--overlay-bg));
+  background: linear-gradient(transparent, var(--overlay-bg)); 
   color: white;
   padding: 20px 15px 30px;
-  transform: translateY(100%);
+  transform: translateY(100%); /* Mulai dari bawah */
   transition: transform 0.4s ease, opacity 0.4s ease;
   opacity: 0;
   text-align: center;
 }
-
 .food-item:hover .overlay {
-  transform: translateY(0);
+  transform: translateY(0); /* Slide-up */
   opacity: 1;
 }
-
 .overlay h3 {
   font-size: 20px;
   margin: 0 0 8px 0;
   font-weight: 600;
   letter-spacing: 0.5px;
 }
-
 .overlay p {
   font-size: 14px;
   margin: 0;
@@ -124,6 +115,7 @@
   opacity: 0.95;
 }
 
+/* Responsif */
 @media (max-width: 768px) {
   .food-container {
     margin: 20px auto;
@@ -136,7 +128,7 @@
     font-size: 16px;
   }
   .food-gallery {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 2 kolom tablet */
     gap: 20px;
   }
   .food-item {
@@ -144,7 +136,7 @@
     height: 280px;
   }
   .food-item:hover {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Kurangi scale di tablet */
   }
   .overlay {
     padding: 15px 10px 25px;
@@ -159,7 +151,7 @@
 
 @media (max-width: 576px) {
   .food-gallery {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Single column mobile */
     gap: 20px;
   }
   .food-item {
@@ -169,6 +161,7 @@
   .food-header h1 {
     font-size: 24px;
   }
+  /* Hover via :active untuk touch */
   .food-item:active {
     transform: scale(1.05);
   }

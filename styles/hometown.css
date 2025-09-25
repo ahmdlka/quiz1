@@ -1,16 +1,16 @@
 .hometown-container {
   max-width: 1000px;
   margin: 40px auto;
-  padding: 35px; /* Naik padding untuk ruang lebih */
+  padding: 35px;
   font-family: 'Poppins', sans-serif;
-  line-height: 1.7; /* Naik untuk readability */
-  background: var(--bg-gradient); /* Subtle gradient untuk depth */
-  border-radius: 20px; /* Radius lebih lembut */
-  box-shadow: 0 8px 32px rgba(0,0,0,0.06); /* Shadow soft untuk modern look */
-  animation: fadeIn 0.8s ease-in-out; /* Animasi masuk */
+  line-height: 1.7;
+  background: var(--bg-gradient);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+  animation: fadeIn 0.8s ease-in-out;
 }
 
-/* Animasi masuk untuk halaman profile */
+/* Animation for page entry */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -22,46 +22,40 @@
   }
 }
 
-/* Header - Lebih impactful */
 .hometown-header {
   text-align: center;
-  margin-bottom: 40px; /* Naik untuk white space */
-  padding: 20px; /* Tambah padding internal */
+  margin-bottom: 40px;
+  padding: 20px;
 }
+
 .hometown-header h1 {
   font-family: "Press Start 2P", cursive;
-  font-size: 40px; /* Naik dari 32px untuk impact */
+  font-size: 40px;
   color: var(--accent);
   margin: 0 0 12px 0;
-  letter-spacing: 3px; /* Spacing untuk retro feel */
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
+  letter-spacing: 3px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
+
 .hometown-header p {
-  font-size: 18px; /* Naik dari 16px */
+  font-size: 18px;
   color: var(--text-secondary);
-  max-width: 600px; /* Batasi agar tidak terlalu lebar */
+  max-width: 600px;
   margin: 0 auto;
   font-weight: 400;
 }
 
-/* Page title styles */
-.page-title {
-  font-family: "Press Start 2P", system-ui;
-  font-size: 24px;
-  color: black;
-  margin-bottom: 20px;
-}
-
-/* Section layout - Lebih lega dan smooth */
+/* Section layout */
 .hometown-section {
   display: flex;
   align-items: center;
-  margin-bottom: 80px; /* Naik untuk spacing antar section */
-  gap: 40px; /* Naik dari 30px untuk balance */
+  margin-bottom: 80px;
+  gap: 40px;
   flex-wrap: wrap;
-  position: relative; /* Untuk divider line */
+  position: relative;
 }
-.hometown-section::after { /* Subtle divider line antar section */
+
+.hometown-section::after {
   content: "";
   position: absolute;
   bottom: -40px;
@@ -72,38 +66,45 @@
   background: var(--accent);
   border-radius: 1px;
 }
-.hometown-section:last-of-type::after { /* Hilangkan divider di section terakhir */
+
+.hometown-section:last-of-type::after {
   display: none;
 }
+
 .hometown-section.reverse {
   flex-direction: row-reverse;
 }
+
 .hometown-section img {
   width: 45%;
-  max-width: 450px; /* Batasi agar tidak melebihi container */
-  max-height: 400px; /* Konsistensi tinggi */
-  border-radius: 16px; /* Radius lebih lembut */
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08); /* Shadow lebih soft */
-  object-fit: cover; /* Auto-crop/shrink untuk rasio 16:9 landscape */
+  max-width: 450px;
+  max-height: 400px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  object-fit: cover;
   object-position: center;
-  transition: transform 0.4s ease, filter 0.4s ease; /* Smooth hover */
+  transition: transform 0.4s ease, filter 0.4s ease;
 }
+
 .hometown-section img:hover {
-  transform: scale(1.05); /* Subtle zoom */
-  filter: brightness(1.05); /* Tingkatkan brightness untuk vibrancy */
+  transform: scale(1.05);
+  filter: brightness(1.05);
 }
+
 .section-text {
   flex: 1;
-  min-width: 300px; /* Pastikan teks punya ruang */
+  min-width: 300px;
 }
+
 .section-text h2 {
-  font-size: 28px; /* Naik dari 24px */
-  margin-bottom: 15px; /* Spacing lebih */
+  font-size: 28px;
+  margin-bottom: 15px;
   color: var(--accent);
   font-weight: 600;
   position: relative;
 }
-.section-text h2::after { /* Underline subtle untuk h2 */
+
+.section-text h2::after {
   content: "";
   position: absolute;
   bottom: -5px;
@@ -113,15 +114,16 @@
   background: var(--accent);
   border-radius: 1px;
 }
+
 .section-text p {
-  font-size: 16px; /* Naik dari 15px */
+  font-size: 16px;
   color: var(--text-primary);
-  max-width: 550px; /* Batasi agar teks tidak melebihi, wrap alami */
-  hyphens: auto; /* Auto-wrap kata panjang */
+  max-width: 550px;
+  hyphens: auto;
   word-wrap: break-word;
 }
 
-/* Responsif - Clean di mobile/tablet */
+/* Responsive design */
 @media (max-width: 768px) {
   .hometown-container {
     margin: 20px auto;

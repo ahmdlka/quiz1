@@ -4,353 +4,40 @@
   padding: 45px;
   background: #fff;
   border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.08); /* Pertahankan subtle shadow di container utama */
-  font-family: "Google Sans Code", monospace;
-  animation: fadeIn 0.8s ease-in-out; /* Animasi masuk */
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  animation: fadeIn 0.8s ease-in-out;
 }
 
-/* Animasi masuk untuk halaman profile */
+/* Animation for page entry */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
-/* Sections - Lebih clean: Hilangkan border, kurangi padding, tambah margin bawah untuk flow */
+/* Section styles */
 .profile-section {
-  margin-bottom: 40px; /* Naik untuk white space lebih banyak */
-  padding: 15px 0; /* Padding vertikal saja, hilangkan horizontal untuk flowing */
-  /* Hilangkan border dan hover shadow untuk clean look */
-  transition: none; /* Hilangkan transition jika tidak perlu */
+  margin-bottom: 40px;
+  padding: 15px 0;
 }
+
 .profile-section h2 {
   font-family: "Press Start 2P", system-ui;
-  font-weight: 400;
-  font-style: normal;
   font-size: 20px;
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 20px; /* Naik untuk spacing sebelum konten */
-  border-bottom: 2px solid #3688ed;
-  display: inline-block;
-  padding-bottom: 4px;
-}
-
-/* Page title styles */
-.page-title {
-  font-family: "Press Start 2P", system-ui;
-  font-size: 24px;
-  color: black;
   margin-bottom: 20px;
+  border-bottom: 2px solid #3688ed;
 }
 
-/* About & Story - Layout clean dengan flex, gap lebih lega */
-.about-content, .story-content {
-  display: flex;
-  align-items: flex-start;
-  gap: 40px; /* Naik untuk spacing alami */
-  flex-wrap: wrap;
-}
-
-/* Gambar Umum - Pertahankan batasan ukuran dan crop, tapi shadow lebih subtle */
-.profile-section img {
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Kurangi shadow intensity */
-  transition: transform 0.3s ease;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-}
-
-/* About specific - Square ratio, max 200px */
-.about-content img {
-  width: 25%;
-  max-width: 200px;
-  aspect-ratio: 1 / 1;
-  height: auto;
-  min-width: 150px;
-}
-.about-content img:hover {
-  transform: scale(1.03); /* Subtle hover, kurangi dari 1.05 */
-}
-
-/* Story specific - Landscape ratio, max 300px */
-.story-content img {
-  width: 40%;
-  max-width: 300px;
-  aspect-ratio: 16 / 9;
-  height: auto;
-}
-.story-content img:hover {
-  transform: scale(1.02);
-}
-
-/* Wrapper teks - Lebih clean, gap kecil */
-.about-text, .story-text {
-  flex: 1;
-  min-width: 300px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px; /* Naik sedikit untuk readability */
-}
-
-/* Typography - Clean dan readable, line-height lebih tinggi */
+/* Typography */
 .profile-name {
-  font-family: "Press Start 2P", system-ui;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 28px;
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  letter-spacing: 2px;
-  line-height: 1.2;
-  /* Hilangkan text-shadow untuk clean */
+  font-size: 24px;
+  font-weight: bold;
 }
+
 .profile-role {
-  font-family: "Press Start 2P", cursive;
-  font-size: 16px;
-  color: #606060;
-  margin: 0 0 12px 0;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-}
-.about-content p, .story-content p {
-  font-size: 16px;
-  color: #444;
-  line-height: 1.7; /* Naik untuk flow alami */
-  margin: 0;
-  text-align: left;
-  hyphens: auto; /* Auto-wrap kata panjang */
-}
-
-/* Story Text Specific - Batasi lebar agar tidak melebihi batas */
-.story-text, .story-content p { /* Handle dengan atau tanpa wrapper */
-  max-width: 600px; /* Batasi teks di desktop, tidak full container */
-  word-wrap: break-word; /* Wrap jika kata terlalu panjang */
-}
-
-/* Hobbies & Interests - Clean grid, hilangkan bg di item */
-.hobby-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px; /* Spacing alami */
-  justify-content: flex-start;
-}
-.hobby-item {
-  flex: 1 1 200px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 10px 35px; /* Pertahankan minimal padding */
-  /* Hilangkan background dan border-radius untuk flat */
-  transition: transform 0.3s ease;
-}
-.hobby-item:hover {
-  transform: translateY(-2px); /* Subtle hover */
-}
-.hobby-item img {
-  width: 100%;
-  max-width: 180px;
-  max-height: 180px;
-  aspect-ratio: 1 / 1;
-  height: auto;
-  margin-bottom: 8px;
-  /* Shadow subtle saja */
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-}
-.hobby-item p {
-  font-family: "Google Sans Code", monospace;
-  font-size: 16px;
-  font-weight: 700;
-  color: #000000;
-  margin: 0;
-  font-weight: 500;
-}
-
-/* Timeline - Clean, tanpa perubahan besar */
-.timeline {
-  list-style: none;
-  padding: 0;
-}
-.timeline li {
-  margin-bottom: 20px; /* Naik untuk spacing */
-  padding-left: 18px;
-  border-left: 2px solid #4a90e2; /* Kurangi thickness */
-  position: relative;
-}
-.timeline li::before {
-  content: "";
-  position: absolute;
-  left: -6px; /* Adjust posisi */
-  top: 6px;
-  width: 8px; /* Kurangi size dot */
-  height: 8px;
-  background: #4a90e2;
-  border-radius: 50%;
-}
-.timeline h3 {
-  margin: 0 0 4px 0;
-  font-size: 15px;
-}
-.timeline span {
-  font-size: 12px;
-  color: #777;
-  display: block;
-  margin-bottom: 4px;
-}
-.timeline p {
-  font-size: 14px;
-  margin: 0;
-  color: #444;
-  line-height: 1.5;
-}
-
-/* Projects - Clean cards, hilangkan bg */
-.project-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 25px; /* Naik untuk white space */
-}
-.project-card {
-  /* Hilangkan background dan padding berlebih untuk flat */
-  padding: 0; /* Hilangkan padding */
-  box-shadow: none; /* Hilangkan shadow card */
-  transition: transform 0.3s ease;
-  text-align: left; /* Left align untuk clean */
-  border-radius: 0; /* Hilangkan radius untuk seamless */
-}
-.project-card:hover {
-  transform: translateY(-3px); /* Subtle hover */
-}
-.project-card img {
-  width: 100%;
-  max-width: 100%;
-  max-height: 150px;
-  aspect-ratio: 16 / 9;
-  height: auto;
-  border-radius: 12px 12px 0 0; /* Radius hanya atas */
-  margin-bottom: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-.project-card h3 {
-  font-size: 16px;
-  margin: 0 0 6px 0;
-}
-.project-card p {
-  font-size: 14px;
-  color: #555;
-  margin: 0;
-  line-height: 1.5;
-}
-
-/* Fallback untuk browser lama (tetap sama) */
-@supports not (aspect-ratio: 1 / 1) {
-  .about-content img { height: 200px; }
-  .hobby-item img { height: 120px; }
-  .story-content img { height: 170px; }
-  .project-card img { height: 130px; }
-}
-
-/* Responsif - Clean di semua ukuran, teks story full tapi bounded */
-@media (max-width: 768px) {
-  .profile-container {
-    margin: 20px auto;
-    padding: 20px;
-  }
-  .profile-section {
-    margin-bottom: 30px;
-    padding: 10px 0;
-  }
-  .about-content, .story-content {
-    gap: 25px;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .about-content img {
-    width: 40%;
-    max-width: 180px;
-  }
-  .story-content img {
-    width: 60%;
-    max-width: 250px;
-  }
-  .story-text, .story-content p {
-    max-width: 100%; /* Full di tablet, tapi hyphens handle wrap */
-  }
-  .hobby-item {
-    flex: 1 1 150px;
-  }
-  .hobby-item img {
-    max-width: 100px;
-    max-height: 100px;
-  }
-  .project-card {
-    text-align: center;
-  }
-  .project-card img {
-    max-height: 120px;
-  }
-  .profile-name {
-    font-size: 24px;
-  }
-}
-
-@media (max-width: 576px) {
-  .profile-container {
-    margin: 10px auto;
-    padding: 15px;
-  }
-  .about-content, .story-content {
-    gap: 20px;
-  }
-  .about-content img, .story-content img {
-    width: 100%;
-    max-width: 200px;
-  }
-  .story-text, .story-content p {
-    max-width: 100%;
-    font-size: 15px;
-    line-height: 1.6;
-    padding: 0 10px; /* Tambah side padding di mobile untuk tidak terlalu edge */
-  }
-  .hobby-list, .project-list {
-    justify-content: center;
-    gap: 15px;
-  }
-  .hobby-item {
-    flex: 1 1 120px;
-  }
-  .hobby-item img {
-    max-width: 80px;
-    max-height: 80px;
-  }
-  .project-card img {
-    max-height: 100px;
-  }
-  .profile-name {
-    font-size: 20px;
-    letter-spacing: 1px;
-  }
-  .profile-role, .about-content p {
-    font-size: 15px;
-  }
-  .about-text, .story-text {
-    min-width: auto;
-    gap: 8px;
-  }
-  /* Interests mirip hobbies */
-  .interests .hobby-item img {
-    max-width: 80px;
-    max-height: 80px;
-    aspect-ratio: 1 / 1;
-  }
+  font-size: 18px;
+  color: #666;
 }
