@@ -93,3 +93,44 @@ window.addEventListener("DOMContentLoaded", () => {
   
   loadContent(initialPath);
 });
+
+New
+
+Share
+
+
+
+
+
+
+New Chat
+30 lines
+
+// Food Hover Effect - Blur others on hover
+function initFoodHover() {
+  const foodItems = document.querySelectorAll('.food-item');
+  
+  foodItems.forEach(item => {
+    item.addEventListener('mouseenter', () => {
+      foodItems.forEach(other => {
+        if (other !== item) {
+          other.classList.add('blurred');
+        }
+      });
+      item.classList.add('focused');
+      item.classList.remove('blurred');
+    });
+    
+    item.addEventListener('mouseleave', () => {
+      foodItems.forEach(other => {
+        other.classList.remove('blurred');
+      });
+      item.classList.remove('focused');
+    });
+  });
+}
+// Panggil init setelah load konten food
+// Di fungsi loadPage, setelah content.innerHTML = ..., tambah:
+if (window.location.pathname.includes('/food')) {
+  initFoodHover();
+}
