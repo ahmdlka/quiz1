@@ -117,6 +117,11 @@ function initFoodHover() {
     });
   });
 }
+// Panggil init setelah load konten food
+// Di fungsi loadPage, setelah content.innerHTML = ..., tambah:
+if (window.location.pathname.includes('/food')) {
+  initFoodHover();
+}
 
 // Profile Animations - Initial load + scroll-triggered
 function initProfileAnimations() {
@@ -157,16 +162,4 @@ function initProfileAnimations() {
   return () => {
     observer.disconnect();
   };
-}
-
-// Panggil init setelah load konten food
-// Di fungsi loadPage, setelah content.innerHTML = ..., tambah:
-if (window.location.pathname.includes('/food')) {
-  initFoodHover();
-}
-
-// Panggil init setelah load konten profile
-// Di fungsi loadPage, setelah content.innerHTML = ..., tambah:
-if (window.location.pathname.includes('/profile')) {
-  initProfileAnimations();
 }
