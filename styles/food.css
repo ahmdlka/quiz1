@@ -58,11 +58,12 @@
   transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
-.food-item:hover {
+.food-item:hover,
+.food-item.focused { /* Hover + focused state */
   transform: scale(1.1); /* Timbul */
   box-shadow: 0 12px 40px rgba(212, 165, 116, 0.3); /* Shadow accent */
   border: 3px solid var(--accent); /* Border timbul */
-  z-index: 10; /* Di atas yang lain */
+  z-index: 100; /* Di atas semuanya */
 }
 .food-item img {
   width: 100%;
@@ -70,12 +71,19 @@
   object-fit: cover; /* Auto-crop/shrink square */
   object-position: center;
   transition: filter 0.4s ease;
+  display: block;
 }
-.food-item.blurred img { /* Blur via JS class */
-  filter: blur(4px);
+
+/* Page Blur Effect - Blur seluruh body kecuali focused item */
+body.page-blur {
+  filter: blur(3px); /* Blur halaman utama */
+  transition: filter 0.4s ease;
 }
-.food-item.focused img {
-  filter: none; /* Clear untuk focused */
+body.page-blur .food-item.focused,
+body.page-blur .food-item.focused img,
+body.page-blur .food-item.focused .overlay { /* Exclude focused item */
+  filter: none !important; /* Tetap sharp */
+  z-index: 100;
 }
 
 /* Overlay - Hidden default, animasi slide-up fade-in */
@@ -92,7 +100,8 @@
   opacity: 0;
   text-align: center;
 }
-.food-item:hover .overlay {
+.food-item:hover .overlay,
+.food-item.focused .overlay {
   transform: translateY(0); /* Slide-up */
   opacity: 1;
 }
@@ -129,8 +138,12 @@
     max-width: 280px;
     height: 280px;
   }
-  .food-item:hover {
+  .food-item:hover,
+  .food-item.focused {
     transform: scale(1.05); /* Kurangi scale di tablet */
+  }
+  body.page-blur {
+    filter: blur(2px); /* Kurangi blur di tablet agar tidak terlalu kuat */
   }
   .overlay {
     padding: 15px 10px 25px;
@@ -155,6 +168,9 @@
   .food-header h1 {
     font-size: 24px;
   }
+  body.page-blur {
+    filter: blur(1.5px); /* Lebih subtle di mobile */
+  }
   /* Hover via :active untuk touch */
   .food-item:active {
     transform: scale(1.05);
@@ -163,4 +179,5 @@
     transform: translateY(0);
     opacity: 1;
   }
+  /* Untuk mobile, simulasi blur via JS touch event jika perlu (lihat JS) */
 }
