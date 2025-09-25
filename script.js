@@ -123,43 +123,101 @@ if (window.location.pathname.includes('/food')) {
   initFoodHover();
 }
 
-// Profile Animations - Initial load + scroll-triggered
+// Profile Animations - Dengan fallback anti-hilang
 function initProfileAnimations() {
   const container = document.querySelector('.profile-container');
   const sections = document.querySelectorAll('.profile-section');
+  let observer = null;
 
-  // Initial Load Animation: Trigger setelah DOM ready
+  // Disable no-js fallback setelah JS load
+  document.documentElement.classList.remove('no-js');
+
+  // Initial Load: Tambah .loaded dan hidden class untuk anim
   if (container) {
+    // Sembunyikan sections untuk animasi (jika JS aktif)
+    sections.forEach(section => section.classList.add('animate-hidden'));
+    console.log('Profile: Initial hidden applied'); // Debug
+
     setTimeout(() => {
       container.classList.add('loaded');
-    }, 100); // Delay kecil untuk feel natural
+      console.log('Profile: Loaded class added'); // Debug
+    }, 100);
   }
 
-  // Scroll-Triggered Animations via Intersection Observer
-  const observerOptions = {
-    threshold: 0.2, // Trigger saat 20% elemen visible
-    rootMargin: '0px 0px -50px 0px' // Trigger sedikit sebelum full visible
-  };
+  // Cek support IntersectionObserver
+  if ('IntersectionObserver' in window) {
+    const observerOptions = {
+      threshold: 0.2,
+      rootMargin: '0px 0px -50px 0px'
+    };
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // Masuk viewport: Tambah animasi
-        entry.target.classList.add('animate-in');
-      } else {
-        // Keluar viewport: Reset untuk re-trigger (opsional, untuk infinite scroll feel)
-        entry.target.classList.remove('animate-in');
-      }
-    });
-  }, observerOptions);
+    observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove('animate-hidden');
+          entry.target.classList.add('animate-in');
+          console.log('Profile: Animate-in triggered for', entry.target); // Debug
+        } else {
+          entry.target.classList.add('animate-hidden');
+          entry.target.classList.remove('animate-in');
+        }
+      });
+    }, observerOptions);
 
-  // Observe setiap section (animasi cascade ke child via CSS)
-  sections.forEach(section => {
-    observer.observe(section);
-  });
+    sections.forEach(section => observer.observe(section));
+    console.log('Profile: Observer initialized'); // Debug
+  } else {
+    // Fallback: Tampilkan semua setelah delay jika no support
+    console.warn('Profile: No IntersectionObserver, fallback to visible');
+    setTimeout(() => {
+      sections.forEach(section => {
+        section.classList.remove('animate-hidden');
+        section.classList.add('animate-in');
+      });
+    }, 500);
+  }
 
-  // Cleanup: Disconnect observer saat unload page (untuk SPA)
+  // Cleanup function untuk SPA (panggil saat route change)
   return () => {
-    observer.disconnect();
+    if (observer) observer.disconnect();
+    console.log('Profile: Cleanup observer'); // Debug
   };
+}
+
+// Integrasi di loadPage (contoh lengkap untuk route 'profile')
+function loadPage(path) {
+  const content = document.getElementById('content'); // Asumsi ID content
+  let cleanup = null;
+
+  if (path === 'profile') {
+    fetch('/quiz1/templates/profile.html')
+      .then(res => res.text())
+      .then(html => {
+        content.innerHTML = html;
+        // Load CSS
+        let pageStyle = document.getElementById('page-style');
+        if (!pageStyle) {
+          pageStyle = document.createElement('link');
+          pageStyle.id = 'page-style';
+          pageStyle.rel = 'stylesheet';
+          document.head.appendChild(pageStyle);
+        }
+        pageStyle.href = '/quiz1/styles/profile.css';
+        
+        // Init animasi
+        cleanup = initProfileAnimations();
+        
+        // Update URL jika SPA
+        history.pushState({path: path}, '', '/quiz1/profile');
+      })
+      .catch(err => {
+        console.error('Profile load error:', err);
+        content.innerHTML = '<p>Error loading profile. Check console.</p>';
+      });
+  }
+
+  // Saat route change (misalnya popstate listener), panggil cleanup jika ada
+  window.addEventListener('popstate', (e) => {
+    if (cleanup) cleanup();
+  });
 }

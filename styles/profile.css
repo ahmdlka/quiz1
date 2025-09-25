@@ -9,7 +9,7 @@
   opacity: 0; /* Initial untuk fade-in */
   transform: scale(0.8); /* Mulai kecil */
   transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  will-change: opacity, transform; /* GPU acceleration */
+  will-change: opacity, transform;
 }
 
 .profile-container.loaded { /* Class JS untuk trigger initial anim */
@@ -21,10 +21,19 @@
 .profile-section {
   margin-bottom: 40px;
   padding: 15px 0;
-  opacity: 0; /* Hidden awal */
-  transform: translateY(30px) scale(0.95); /* Slide-up + scale kecil */
+  opacity: 1; /* Default visible untuk fallback */
+  transform: translateY(0) scale(1); /* Default normal */
   transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   will-change: opacity, transform;
+}
+
+.profile-section.animate-hidden { /* Hanya hidden jika JS aktif */
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+}
+.profile-section.animate-in {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 .profile-section.animate-in { /* Trigger saat scroll */
@@ -351,6 +360,17 @@
   line-height: 1.5;
 }
 
+/* Tambahan untuk Project Link */
+.project-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block; /* Full clickable */
+}
+.project-card-link:hover .project-card {
+  transform: translateY(-3px) !important; /* Hover tetap work */
+}
+
+
 /* Fallback untuk browser lama */
 @supports not (aspect-ratio: 1 / 1) {
   .about-content img { height: 200px; }
@@ -476,5 +496,13 @@
   }
   .about-text p, .story-text p, .story-content p {
     transform: translateY(10px);
+  }
+    .profile-section {
+    opacity: 1; /* Lebih aggressive fallback di mobile */
+    transform: translateY(0) scale(1);
+  }
+  .profile-section.animate-hidden {
+    opacity: 0;
+    transform: translateY(10px) scale(0.99);
   }
 }

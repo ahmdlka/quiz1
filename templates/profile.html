@@ -1,6 +1,7 @@
 <div class="profile-container">
-  <!-- About (sudah ada wrapper) -->
+  <!-- About (tambah h2 untuk animasi) -->
   <div class="profile-section about">
+    <h2>About Me</h2>
     <div class="about-content">
       <img src="assets/about-me.jpg" alt="About Me">
       <div class="about-text">
@@ -34,12 +35,12 @@
     </div>
   </div>
 
-  <!-- Story (Tambah wrapper .story-text untuk batasi teks) -->
+  <!-- Story (tidak berubah, sudah ada wrapper) -->
   <div class="profile-section story">
     <h2>My Story at Informatics</h2>
     <div class="story-content">
       <img src="assets/its-campus.jpg" alt="ITS Campus">
-      <div class="story-text"> <!-- Tambahan wrapper ini -->
+      <div class="story-text">
         <p>
           Starting my journey in Informatics at ITS has been exciting and full of discoveries.
           From basic programming in C/C++ to learning about operating systems, databases,
@@ -72,15 +73,17 @@
     </ul>
   </div>
 
-  <!-- Projects (tidak berubah) -->
+  <!-- Projects (fix: wrap card pertama dengan <a> untuk link) -->
   <div class="profile-section">
     <h2>Projects</h2>
     <div class="project-list">
-      <div class="project-card" href="http://smagokoneksi.site">
-        <img src="assets/alumni-website.jpg" alt="Alumni Website">
-        <h3>Smago Connection</h3>
-        <p>A modern website to showcase alumni data and profiles.</p>
-      </div>
+      <a href="http://smagokoneksi.site" target="_blank" class="project-card-link">
+        <div class="project-card">
+          <img src="assets/alumni-website.jpg" alt="Alumni Website">
+          <h3>Smago Connection</h3>
+          <p>A modern website to showcase alumni data and profiles.</p>
+        </div>
+      </a>
       <div class="project-card">
         <img src="assets/robot-pathfinding.jpg" alt="Pathfinding Robot">
         <h3>Pathfinding Robot</h3>
@@ -94,7 +97,7 @@
     </div>
   </div>
 
-  <!-- Interests (tidak berubah, asumsi mirip hobbies) -->
+  <!-- Interests (tambah class .interests untuk CSS spesifik) -->
   <div class="profile-section interests">
     <h2>Fields I’m Interested In</h2>
     <div class="hobby-list">
