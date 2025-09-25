@@ -116,6 +116,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // Ensure active nav link is set
   setActiveNavLink();
+
+  // Init hamburger toggle
+  initHamburger();
 });
 
 // Food Hover Effect - Blur others on hover
@@ -145,4 +148,37 @@ function initFoodHover() {
 // Di fungsi loadPage, setelah content.innerHTML = ..., tambah:
 if (window.location.pathname.includes('/food')) {
   initFoodHover();
+}
+
+// Initialize hamburger menu toggle
+function initHamburger() {
+  const toggleBtn = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  if (!toggleBtn || !navLinks) return;
+
+  const closeMenu = () => {
+    toggleBtn.classList.remove('active');
+    navLinks.classList.remove('show');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+  };
+
+  toggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = toggleBtn.classList.toggle('active');
+    navLinks.classList.toggle('show', isOpen);
+    toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  // Close when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!navLinks.contains(e.target) && e.target !== toggleBtn) {
+      closeMenu();
+    }
+  });
+
+  // Close when navigating via nav link
+  navLinks.addEventListener('click', (e) => {
+    const a = e.target.closest('a');
+    if (a) closeMenu();
+  });
 }
